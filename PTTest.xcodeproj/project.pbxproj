@@ -21,8 +21,10 @@
 		BC0F3652178CBE9800E39CE3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC0F3634178CBE9800E39CE3 /* UIKit.framework */; };
 		BC0F365A178CBE9800E39CE3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC0F3658178CBE9800E39CE3 /* InfoPlist.strings */; };
 		BC0F365C178CBE9800E39CE3 /* PTTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0F365B178CBE9800E39CE3 /* PTTestTests.m */; };
-		BCDA5B3117970F7E00829576 /* libPDFNet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDA5B1717970F7E00829576 /* libPDFNet.a */; };
-		BCDA5B3217970F7E00829576 /* libTools.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDA5B1817970F7E00829576 /* libTools.a */; };
+		BC5CEBBD17A0A93C00405806 /* libPDFNet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5CEBBB17A0A93C00405806 /* libPDFNet.a */; };
+		BC5CEBBE17A0A93C00405806 /* libTools.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5CEBBC17A0A93C00405806 /* libTools.a */; };
+		BC5CEC2B17A0B01600405806 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5CEC2A17A0B01600405806 /* QuartzCore.framework */; };
+		BC5CEC2D17A0B01C00405806 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5CEC2C17A0B01C00405806 /* CoreText.framework */; };
 		BCDA5B3317970F7E00829576 /* loupe.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDA5B1A17970F7E00829576 /* loupe.png */; };
 		BCDA5B3417970F7E00829576 /* PopupIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDA5B1B17970F7E00829576 /* PopupIcon.png */; };
 		BCDA5B3517970F7E00829576 /* select_ball.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDA5B1C17970F7E00829576 /* select_ball.png */; };
@@ -72,8 +74,10 @@
 		BC0F3657178CBE9800E39CE3 /* PTTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PTTestTests-Info.plist"; sourceTree = "<group>"; };
 		BC0F3659178CBE9800E39CE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BC0F365B178CBE9800E39CE3 /* PTTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTTestTests.m; sourceTree = "<group>"; };
-		BCDA5B1717970F7E00829576 /* libPDFNet.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPDFNet.a; path = Lib/libPDFNet.a; sourceTree = "<group>"; };
-		BCDA5B1817970F7E00829576 /* libTools.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTools.a; path = Lib/libTools.a; sourceTree = "<group>"; };
+		BC5CEBBB17A0A93C00405806 /* libPDFNet.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPDFNet.a; path = Lib/libPDFNet.a; sourceTree = "<group>"; };
+		BC5CEBBC17A0A93C00405806 /* libTools.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTools.a; path = Lib/libTools.a; sourceTree = "<group>"; };
+		BC5CEC2A17A0B01600405806 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		BC5CEC2C17A0B01C00405806 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		BCDA5B1A17970F7E00829576 /* loupe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loupe.png; sourceTree = "<group>"; };
 		BCDA5B1B17970F7E00829576 /* PopupIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PopupIcon.png; sourceTree = "<group>"; };
 		BCDA5B1C17970F7E00829576 /* select_ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_ball.png; sourceTree = "<group>"; };
@@ -112,11 +116,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC5CEC2D17A0B01C00405806 /* CoreText.framework in Frameworks */,
+				BC5CEC2B17A0B01600405806 /* QuartzCore.framework in Frameworks */,
 				BC0F3633178CBE9800E39CE3 /* CoreGraphics.framework in Frameworks */,
-				BCDA5B3217970F7E00829576 /* libTools.a in Frameworks */,
 				BC0F3635178CBE9800E39CE3 /* UIKit.framework in Frameworks */,
-				BCDA5B3117970F7E00829576 /* libPDFNet.a in Frameworks */,
 				BC0F3631178CBE9800E39CE3 /* Foundation.framework in Frameworks */,
+				BC5CEBBD17A0A93C00405806 /* libPDFNet.a in Frameworks */,
+				BC5CEBBE17A0A93C00405806 /* libTools.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +142,8 @@
 		BC0F3624178CBE9700E39CE3 = {
 			isa = PBXGroup;
 			children = (
+				BC5CEC2C17A0B01C00405806 /* CoreText.framework */,
+				BC5CEC2A17A0B01600405806 /* QuartzCore.framework */,
 				BC0F3665178CBF6600E39CE3 /* PDFTron */,
 				BC0F3636178CBE9800E39CE3 /* PTTest */,
 				BC0F3655178CBE9800E39CE3 /* PTTestTests */,
@@ -218,8 +226,8 @@
 				BCDA5B4617970F8D00829576 /* Tool.h */,
 				BCDA5B47179719DA00829576 /* NSObjectInitWithCptr.h */,
 				BCDA5B48179719DA00829576 /* NSObjectInitWithCptr.m */,
-				BCDA5B1717970F7E00829576 /* libPDFNet.a */,
-				BCDA5B1817970F7E00829576 /* libTools.a */,
+				BC5CEBBB17A0A93C00405806 /* libPDFNet.a */,
+				BC5CEBBC17A0A93C00405806 /* libTools.a */,
 				BCDA5B4C179744CB00829576 /* Test Files */,
 				BCDA5B1917970F7E00829576 /* libTools Required Files */,
 			);
@@ -451,7 +459,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -462,7 +470,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Katarzyna Andersz (Z5789SL8V7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Katarzyna Andersz (Z5789SL8V7)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -479,6 +488,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lstdc++";
+				PROVISIONING_PROFILE = "7C198BE2-5EB3-4786-AF0B-3510C98704BD";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7C198BE2-5EB3-4786-AF0B-3510C98704BD";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -489,7 +501,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -500,7 +512,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Katarzyna Andersz (Z5789SL8V7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Katarzyna Andersz (Z5789SL8V7)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -510,6 +523,9 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-lstdc++";
+				PROVISIONING_PROFILE = "7C198BE2-5EB3-4786-AF0B-3510C98704BD";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7C198BE2-5EB3-4786-AF0B-3510C98704BD";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -529,8 +545,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../../../../../iOS_PDFNet/iOS/Sample/Lib",
-					"$(SRCROOT)/Lib",
+					"\"$(SRCROOT)/Lib\"",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = "-lstdc++";
@@ -553,8 +568,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../../../../../iOS_PDFNet/iOS/Sample/Lib",
-					"$(SRCROOT)/Lib",
+					"\"$(SRCROOT)/Lib\"",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = "-lstdc++";
