@@ -2,7 +2,7 @@
 //  ViewController.m
 //  PTTest
 //
-//  Created by PDFTron on 2013-07-09.
+//  Created by PDFTron on 2013-07-25.
 //  Copyright (c) 2013 PDFTron. All rights reserved.
 //
 
@@ -21,8 +21,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib
-    
+	// Do any additional setup after loading the view, typically from a nib.
+
     // Initilize PDFNet (in demo mode - pages will be watermarked)
     [PDFNet initialize];
     
@@ -41,12 +41,14 @@
     // Add the PDFViewCtrl to the root view
     [self.view addSubview:pdfViewCtrl];
     
+    // Makes the background textured (< iOS 7) or plain gray (iOS 7)
     [self.view setBackgroundColor:[UIColor scrollViewTexturedBackgroundColor]];
     
+    // sets the non-page content of the PDFViewCtrl to transparent
     [pdfViewCtrl SetBackgroundColor:255 g:255 b:255 a:0];
     
+    // sets the initial tool to support text selection, annotation editing, etc.
     [pdfViewCtrl setTool:[[PanTool alloc] initWithPDFViewCtrl:pdfViewCtrl]];
-    
     
 }
 
