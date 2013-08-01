@@ -24,7 +24,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
 
     // Initilize PDFNet (in demo mode - pages will be watermarked)
-    [PDFNet initialize];
+    [PDFNet Initialize:@""];
     
     // Get the path to document in the app bundle.
     NSString* fullPath = [[NSBundle mainBundle] pathForResource:@"mech" ofType:@"pdf"];
