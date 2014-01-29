@@ -1,3 +1,8 @@
+//---------------------------------------------------------------------------------------
+// Copyright (c) 2001-2014 by PDFTron Systems Inc. All Rights Reserved.
+// Consult legal.txt regarding legal and license information.
+//---------------------------------------------------------------------------------------
+
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "PDFNetOBJC.h"

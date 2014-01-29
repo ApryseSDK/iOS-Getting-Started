@@ -24,25 +24,14 @@
 @class Font;
 @class SecurityHandler;
 @class SignatureHandler;
+@class ColorPt;
+@class HTTPRequestOptions;
+@class Selection;
 typedef size_t SignatureHandlerId;
 
 typedef enum ReferencePos {  e_begin = SEEK_SET,
   e_end = SEEK_END,
   e_cur = SEEK_CUR}ReferencePos;
-
-typedef enum OpenMode {  e_read_mode,
-  e_write_mode,
-  e_append_mode}OpenMode;
-
-typedef enum FlattenThresholdFlag {  e_flattenthreshold_very_strict,
-  e_flattenthreshold_strict,
-  e_flattenthreshold_default,
-  e_flattenthreshold_keep_most,
-  e_flattenthreshold_keep_all}FlattenThresholdFlag;
-
-typedef enum FlattenFlag {  e_flatten_off,
-  e_flatten_simple,
-  e_flatten_fast}FlattenFlag;
 
 typedef enum AnnotationOutputFlag {  e_internal_xfdf,
   e_external_xfdf,
@@ -64,7 +53,7 @@ typedef enum CompressionMode {  e_retain,
   e_none}CompressionMode;
 
 typedef enum DownsampleMode {  e_off,
-  e_default}DownsampleMode;
+  e_ds_default}DownsampleMode;
 
 typedef enum MonoCompressionMode {  e_mn_jbig2,
   e_mn_flate,
@@ -479,7 +468,8 @@ typedef enum Conformance {  e_NoConformance = 0,
   e_Level3B,
   e_Level3U}Conformance;
 
-typedef enum ErrorCode {  e_PDFA0_1_1 = 11,
+typedef enum ErrorCode {  e_PDFA0_1_0 = 10,
+  e_PDFA0_1_1 = 11,
   e_PDFA0_1_2 = 12,
   e_PDFA0_1_3 = 13,
   e_PDFA0_1_4 = 14,
@@ -664,12 +654,26 @@ typedef enum ErrorCode {  e_PDFA0_1_1 = 11,
   e_PDFA2_10_21 = 21021,
   e_PDFA11_0_0 = 11000,
   e_PDFA6_2_11_8 = 62118,
+  e_PDFA8_1 = 81,
+  e_PDFA_3E1 = 1,
+  e_PDFA_3E2 = 2,
+  e_PDFA_3E3 = 3,
   e_PDFA_LAST}ErrorCode;
 
 typedef enum ContentItemType {  e_MCR,
   e_MCID,
   e_OBJR,
   e_c_Unknown}ContentItemType;
+
+typedef enum FlattenThresholdFlag {  e_very_strict,
+  e_strict,
+  e_default,
+  e_keep_most,
+  e_keep_all}FlattenThresholdFlag;
+
+typedef enum FlattenFlag {  e_flatten_off,
+  e_flatten_simple,
+  e_flatten_fast}FlattenFlag;
 
 typedef enum PathSegmentType {  e_moveto = 1,
   e_lineto,
@@ -913,14 +917,18 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 + (void)StaticCurrentPageProc: (int)current_page num_pages:  (int)num_pages data:  (SWIGTYPE_p_void*)data;
 - (void)CurrentZoomProc: (double)curr_zoom_proc;
 + (void)StaticCurrentZoomProc: (double)curr_zoom_proc data:  (SWIGTYPE_p_void*)data;
-- (void)CreateTileProc: (NSString *)buffer originX:  (int)originX originY:  (int)originY width:  (int)width height:  (int)height cellNumber:  (long long)cellNumber finalRender:  (BOOL)finalRender predictionRender:  (BOOL)predictionRender tiles_remaining:  (int)tiles_remaining first_tile:  (BOOL)first_tile canvas_width:  (int)canvas_width canvas_height:  (int)canvas_height cell_side_length:  (int)cell_side_length cell_per_row:  (int)cell_per_row cell_per_col:  (int)cell_per_col thumb_nail_id:  (int)thumb_nail_id;
-+ (void)StaticCreateTileProc: (SWIGTYPE_p_void*)callingObject buffer:  (NSString *)buffer originX:  (int)originX originY:  (int)originY width:  (int)width height:  (int)height canvasNumber:  (int)canvasNumber cellNumber:  (long long)cellNumber finalRender:  (BOOL)finalRender predictionRender:  (BOOL)predictionRender tiles_remaining:  (int)tiles_remaining first_tile:  (BOOL)first_tile canvas_width:  (int)canvas_width canvas_height:  (int)canvas_height cell_side_length:  (int)cell_side_length cell_per_row:  (int)cell_per_row cell_per_col:  (int)cell_per_col thumb_nail_id:  (int)thumb_nail_id;
-- (void)RemoveTileProc: (int)canvasNumber cellNumber:  (long long)cellNumber thumb_nail_id:  (int)thumb_nail_id;
-+ (void)StaticRemoveTileProc: (SWIGTYPE_p_void*)callingObject canvasNumber:  (int)canvasNumber cellNumber:  (long long)cellNumber thumb_nail_id:  (int)thumb_nail_id;
-- (void)ThumbAsyncHandler: (int)page_num was_thumb_found:  (BOOL)was_thumb_found thumb_buf:  (NSString *)thumb_buf thumb_width:  (int)thumb_width thumb_height:  (int)thumb_height custom_data:  (SWIGTYPE_p_void*)custom_data;
-+ (void)StaticThumbAsyncHandler: (SWIGTYPE_p_void*)callingObject page_num:  (int)page_num was_thumb_found:  (BOOL)was_thumb_found thumb_buf:  (NSString *)thumb_buf thumb_width:  (int)thumb_width thumb_height:  (int)thumb_height custom_data:  (SWIGTYPE_p_void*)custom_data;
-- (void)FindTextAsyncHandler: (BOOL)success select:  (SWIGTYPE_p_Selection*)select;
-+ (void)StaticFindTextProc: (unsigned char)success select:  (SWIGTYPE_TRN_PDFViewSelection*)select user_data:  (SWIGTYPE_p_void*)user_data;
+- (void)ThumbAsyncHandler: (int)page_num was_thumb_found:  (BOOL)was_thumb_found thumb_buf:  (NSString *)thumb_buf thumb_width:  (int)thumb_width thumb_height:  (int)thumb_height;
++ (void)StaticThumbAsyncHandler: (int)page_num was_thumb_found:  (BOOL)was_thumb_found thumb_buf:  (NSString *)thumb_buf thumb_width:  (int)thumb_width thumb_height:  (int)thumb_height custom_data:  (SWIGTYPE_p_void*)custom_data;
+- (void)RequestRenderInWorkerThread;
++ (void)StaticRequestRenderInWorkerThread: (SWIGTYPE_p_void*)custom_data;
+- (void)FindTextHandler: (BOOL)success selection:  (Selection*)selection;
++ (void)StaticFindTextHandler: (BOOL)success selection:  (Selection*)selection custom_data:  (SWIGTYPE_p_void*)custom_data;
+- (void)CreateTileProc: (NSString *)buffer originX:  (int)originX originY:  (int)originY width:  (int)width height:  (int)height pagNum:  (int)pagNum cellNumber:  (long long)cellNumber finalRender:  (BOOL)finalRender predictionRender:  (BOOL)predictionRender tilesRemaining:  (int)tilesRemaining firstTile:  (BOOL)firstTile canvasWidth:  (int)canvasWidth canvasHeight:  (int)canvasHeight cellSideLength:  (int)cellSideLength cellPerRow:  (int)cellPerRow cellPerCol:  (int)cellPerCol thumbnailId:  (int)thumbnailId;
++ (void)StaticCreateTileProc: (SWIGTYPE_p_void*)customData buffer:  (NSString *)buffer originX:  (int)originX originY:  (int)originY width:  (int)width height:  (int)height pageNum:  (int)pageNum cellNumber:  (long long)cellNumber finalRender:  (BOOL)finalRender predictionRender:  (BOOL)predictionRender tilesRemaining:  (int)tilesRemaining firstTile:  (BOOL)firstTile canvasWidth:  (int)canvasWidth canvasHeight:  (int)canvasHeight cellSideLength:  (int)cellSideLength cellPerRow:  (int)cellPerRow cellPerCol:  (int)cellPerCol thumbnailId:  (int)thumbnailId;
+- (void)RemoveTileProc: (int)canvasNumber cellNumber:  (SWIGTYPE_Int64*)cellNumber thumbnailId:  (int)thumbnailId;
++ (void)StaticRemoveTileProc: (SWIGTYPE_p_void*)customData canvasNumber:  (int)canvasNumber cellNumber:  (SWIGTYPE_Int64*)cellNumber thumbnailId:  (int)thumbnailId;
+- (void)PartDownloadedProc: (int)dlType doc:  (SWIGTYPE_TRN_PDFDoc*)doc pageNum:  (unsigned int)pageNum objNum:  (unsigned int)objNum message:  (NSString *)message;
++ (void)StaticPartDownloadedProc: (int)dlType doc:  (SWIGTYPE_TRN_PDFDoc*)doc pageNum:  (unsigned int)pageNum objNum:  (unsigned int)objNum message:  (NSString *)message customData:  (SWIGTYPE_p_void*)customData;
 - (id)init;
 @end
 
@@ -1181,6 +1189,24 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 @end
 
 
+@interface RecentlyUsedCache : NSObject
+{
+	void *swigCPtr;
+	BOOL swigCMemOwn;
+}
+- (void*)getCptr;
+- (id)initWithCptr: (void*) cptr;
+- (void)setSwigCMemOwn: (BOOL) own;
+- (void)dealloc;
++ (void)RemoveDocument: (NSString*)document_path;
++ (void)AccessDocument: (NSString*)document_path;
++ (NSString*)GetBitmapPathIfExists: (NSString*)document_path;
++ (void)ResetCache;
++ (void)InitializeRecentlyUsedCache: (unsigned long)num_documents max_absolute_space:  (unsigned long)max_absolute_space max_percentage_space:  (double)max_percentage_space;
+- (id)init;
+@end
+
+
 @interface Matrix2D : TRN_matrix2d
 - (void*)getCptr;
 - (id)initWithCptr: (void*) cptr;
@@ -1188,6 +1214,9 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (void)dealloc;
 - (void)Set: (double)a b:  (double)b c:  (double)c d:  (double)d h:  (double)h v:  (double)v;
 - (void)Concat: (double)a b:  (double)b c:  (double)c d:  (double)d h:  (double)h v:  (double)v;
+- (Matrix2D*)Multiply: (Matrix2D*)m;
+- (BOOL)IsEquals: (Matrix2D*)m;
+- (BOOL)IsNotEquals: (Matrix2D*)m;
 - (PDFPoint*)Mult: (PDFPoint*)pt;
 - (Matrix2D*)Inverse;
 - (void)Translate: (double)h v:  (double)v;
@@ -1274,8 +1303,8 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (void)FlushAll;
 - (BOOL)IsInputFilter;
 - (BOOL)CanSeek;
-- (void)Seek: (long)offset origin:  (ReferencePos)origin;
-- (long)Tell;
+- (void)Seek: (unsigned long long)offset origin:  (ReferencePos)origin;
+- (unsigned long long)Tell;
 - (Filter*)CreateInputIterator;
 - (NSString*)GetFilePath;
 - (void)Destroy;
@@ -1307,8 +1336,8 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (NSData*)Read: (unsigned long)buf_size;
 - (void)AttachFilter: (Filter*)filter;
 - (Filter*)GetAttachedFilter;
-- (void)Seek: (long)offset origin:  (ReferencePos)origin;
-- (long)Tell;
+- (void)Seek: (unsigned long long)offset origin:  (ReferencePos)origin;
+- (unsigned long long)Tell;
 - (unsigned long)Count;
 - (void)Flush;
 - (void)FlushAll;
@@ -1338,8 +1367,8 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (unsigned long)WriteBuffer: (NSData*)buf;
 - (void)AttachFilter: (Filter*)filter;
 - (Filter*)GetAttachedFilter;
-- (void)Seek: (long)offset origin:  (ReferencePos)origin;
-- (long)Tell;
+- (void)Seek: (unsigned long long)offset origin:  (ReferencePos)origin;
+- (unsigned long long)Tell;
 - (unsigned long)Count;
 - (void)Flush;
 - (void)FlushAll;
@@ -1364,6 +1393,74 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 + (BOOL)Equivalent: (NSString*)ph1 ph2:  (NSString*)ph2;
 - (unsigned long)FileSize;
 - (id)initWithFilename: (NSString*)filename;
+@end
+
+
+@interface HTTPRequestOptions : NSObject
+{
+	void *swigCPtr;
+	BOOL swigCMemOwn;
+}
+- (void*)getCptr;
+- (id)initWithCptr: (void*) cptr;
+- (void)setSwigCMemOwn: (BOOL) own;
+- (void)dealloc;
+- (void)AddHeader: (NSString*)header val:  (NSString*)val;
+- (id)init;
+@end
+
+
+@interface Appearance : NSObject
+{
+	void *swigCPtr;
+	BOOL swigCMemOwn;
+}
+- (void*)getCptr;
+- (id)initWithCptr: (void*) cptr;
+- (void)setSwigCMemOwn: (BOOL) own;
+- (void)dealloc;
+- (void)setRedactionOverlay: (BOOL)value;
+- (BOOL)getRedactionOverlay;
+- (void)setPositiveOverlayColor: (ColorPt*)value;
+- (ColorPt*)getPositiveOverlayColor;
+- (void)setNegativeOverlayColor: (ColorPt*)value;
+- (ColorPt*)getNegativeOverlayColor;
+- (void)setBorder: (BOOL)value;
+- (BOOL)getBorder;
+- (void)setUseOverlayText: (BOOL)value;
+- (BOOL)getUseOverlayText;
+- (void)setTextFont: (Font*)value;
+- (Font*)getTextFont;
+- (void)setMinFontSize: (double)value;
+- (double)getMinFontSize;
+- (void)setMaxFontSize: (double)value;
+- (double)getMaxFontSize;
+- (void)setTextColor: (ColorPt*)value;
+- (ColorPt*)getTextColor;
+- (void)setHorizTextAlignment: (int)value;
+- (int)getHorizTextAlignment;
+- (void)setVertTextAlignment: (int)value;
+- (int)getVertTextAlignment;
+- (void)setRedactedContentColor: (ColorPt*)value;
+- (ColorPt*)getRedactedContentColor;
+- (id)init;
+@end
+
+
+@interface LinkInfo : NSObject
+{
+	void *swigCPtr;
+	BOOL swigCMemOwn;
+}
+- (void*)getCptr;
+- (id)initWithCptr: (void*) cptr;
+- (void)setSwigCMemOwn: (BOOL) own;
+- (void)dealloc;
+- (void)setRect: (PDFRect*)value;
+- (PDFRect*)getRect;
+- (void)setUrl: (NSString*)value;
+- (NSString*)getUrl;
+- (id)init;
 @end
 
 
@@ -1394,9 +1491,19 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (void)dealloc;
 - (void)SetEmbedImages: (BOOL)embed_images;
 - (void)SetNoFonts: (BOOL)no_fonts;
+- (void)SetSvgFonts: (BOOL)svg_fonts;
+- (void)SetEmbedFonts: (BOOL)embed_fonts;
 - (void)SetNoUnicode: (BOOL)no_unicode;
 - (void)SetIndividualCharPlacement: (BOOL)individual_char_placement;
 - (void)SetRemoveCharPlacement: (BOOL)remove_char_placement;
+- (void)SetFlattenContent: (FlattenFlag)flatten;
+- (void)SetFlattenThreshold: (FlattenThresholdFlag)threshold;
+- (void)SetCompress: (BOOL)svgz;
+- (void)SetOutputThumbnails: (BOOL)include_thumbs;
+- (void)SetThumbnailSize: (unsigned int)size;
+- (void)SetCreateXmlWrapper: (BOOL)xml;
+- (void)SetDtd: (BOOL)dtd;
+- (void)SetAnnots: (BOOL)annots;
 - (id)init;
 @end
 
@@ -1439,6 +1546,7 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (void)SetOpacityMaskWorkaround: (BOOL)opacity_render;
 - (void)SetMaximumImagePixels: (unsigned int)max_pixels;
 - (void)SetFlattenContent: (FlattenFlag)flatten;
+- (void)SetFlattenThreshold: (FlattenThresholdFlag)threshold;
 - (void)SetPreferJPG: (BOOL)prefer_jpg;
 - (void)SetSilverlightTextWorkaround: (BOOL)workaround;
 - (void)SetAnnotationOutput: (AnnotationOutputFlag)annot_output;
@@ -1462,6 +1570,9 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (void)SetMaximumImagePixels: (unsigned int)max_pixels;
 - (void)SetReflow: (BOOL)reflow;
 - (void)SetScale: (double)scale;
+- (void)SetExternalLinks: (BOOL)enable;
+- (void)SetInternalLinks: (BOOL)enable;
+- (void)SetSimplifyText: (BOOL)enable;
 - (id)init;
 @end
 
@@ -1755,6 +1866,8 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (BOOL)TryLockRead: (int)milliseconds;
 - (NSString*)GetFileName;
 - (void)EnableDiskCaching: (BOOL)use_cache_flag;
++ (SDFDoc*)__Create: (unsigned long long)impl;
+- (unsigned long long)__GetHandle;
 - (id)init;- (id)initWithFilepath: (NSString*)filepath;- (id)initWithStream: (Filter*)stream;- (id)initWithBuf: (NSData*)buf buf_size:  (unsigned long)buf_size;
 @end
 
@@ -2461,6 +2574,8 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (NSString*)GetContents;
 - (void)RefreshAppearance;
 - (void)Resize: (PDFRect*)newrect;
++ (Annot*)__Create: (unsigned long long)impl;
+- (unsigned long long)__GetHandle;
 - (id)initWithD: (Obj*)d;
 @end
 
@@ -2620,6 +2735,8 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (BOOL)GetFormActionFlag: (FormActionFlag)flag;
 - (void)SetFormActionFlag: (FormActionFlag)flag value:  (BOOL)value;
 - (Obj*)GetSDFObj;
++ (Action*)__Create: (unsigned long long)impl;
+- (unsigned long long)__GetHandle;
 - (id)initWithIn_obj: (Obj*)in_obj;
 @end
 
@@ -2808,6 +2925,7 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (int)GetQuadPointCount;
 - (QuadPoint*)GetQuadPoint: (int)idx;
 - (void)SetQuadPoint: (int)idx qp:  (QuadPoint*)qp;
++ (NSString*)GetNormalizedUrl: (NSString*)url;
 - (id)initWithD: (Obj*)d;- (id)init;- (id)initWithAnn: (Annot*)ann;
 @end
 
@@ -3156,6 +3274,8 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (void)SetOCDrawMode: (OCDrawMode)oc_draw_mode;
 - (OCDrawMode)GetOCMode;
 - (void)Destroy;
++ (Context*)__Create: (unsigned long long)impl;
+- (unsigned long long)__GetHandle;
 - (id)initWithConfig: (Config*)config;
 @end
 
@@ -3381,6 +3501,7 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (void)AddImage: (PDFRect*)target_region replacement_image:  (Obj*)replacement_image;
 - (void)AddText: (PDFRect*)target_region replacement_text:  (NSString*)replacement_text;
 - (void)AddString: (NSString*)template_text replacement_text:  (NSString*)replacement_text;
+- (void)SetMatchStrings: (NSString*)start_str end_str:  (NSString*)end_str;
 - (void)Process: (Page*)page;
 - (void)Destroy;
 - (id)init;
@@ -3438,6 +3559,7 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (NSData*)GetOperators;
 - (NSMutableArray*)GetPoints;
 - (BOOL)IsDefined;
+- (int)GetGlyphIndex;
 - (id)init;
 @end
 
@@ -3561,7 +3683,7 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (void)dealloc;
 + (Image*)CreateWithFile: (SDFDoc*)doc filename:  (NSString*)filename encoder_hints:  (Obj*)encoder_hints;
 + (Image*)Create: (SDFDoc*)doc filename:  (NSString*)filename;
-+ (Image*)CreateWithData: (SDFDoc*)doc image_data:  (NSString *)image_data image_data_size:  (unsigned long)image_data_size width:  (int)width height:  (int)height bpc:  (int)bpc color_space:  (ColorSpace*)color_space encoder_hints:  (Obj*)encoder_hints;
++ (Image*)CreateWithData: (SDFDoc*)doc image_data:  (NSData*)image_data image_data_size:  (unsigned long)image_data_size width:  (int)width height:  (int)height bpc:  (int)bpc color_space:  (ColorSpace*)color_space encoder_hints:  (Obj*)encoder_hints;
 + (Image*)CreateWithFilterData: (SDFDoc*)doc image_data:  (FilterReader*)image_data width:  (int)width height:  (int)height bpc:  (int)bpc color_space:  (ColorSpace*)color_space encoder_hints:  (Obj*)encoder_hints;
 + (Image*)CreateImageMaskWithBuffer: (SDFDoc*)doc image_data:  (NSString *)image_data image_data_size:  (unsigned long)image_data_size width:  (int)width height:  (int)height encoder_hints:  (Obj*)encoder_hints;
 + (Image*)CreateImageMask: (SDFDoc*)doc image_data:  (NSString *)image_data image_data_size:  (unsigned long)image_data_size width:  (int)width height:  (int)height;
@@ -3569,7 +3691,6 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 + (Image*)CreateSoftMaskWithBuffer: (SDFDoc*)doc image_data:  (NSString *)image_data image_data_size:  (unsigned long)image_data_size width:  (int)width height:  (int)height bpc:  (int)bpc encoder_hints:  (Obj*)encoder_hints;
 + (Image*)CreateSoftMask: (SDFDoc*)doc image_data:  (NSString *)image_data image_data_size:  (unsigned long)image_data_size width:  (int)width height:  (int)height bpc:  (int)bpc;
 + (Image*)CreateSoftMaskWithStream: (SDFDoc*)doc image_data:  (FilterReader*)image_data width:  (int)width height:  (int)height bpc:  (int)bpc encoder_hints:  (Obj*)encoder_hints;
-+ (Image*)CreateWithBufferAndFormat: (SDFDoc*)doc image_data:  (NSString *)image_data image_data_size:  (unsigned long)image_data_size width:  (int)width height:  (int)height bpc:  (int)bpc color_space:  (ColorSpace*)color_space input_format:  (InputFilter)input_format;
 + (Image*)CreateWithStreamAndFormat: (SDFDoc*)doc image_data:  (FilterReader*)image_data width:  (int)width height:  (int)height bpc:  (int)bpc color_space:  (ColorSpace*)color_space input_format:  (InputFilter)input_format;
 - (Obj*)GetSDFObj;
 - (BOOL)IsValid;
@@ -3777,25 +3898,9 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (void)SetMaximumImagePixels: (unsigned int)max_pixels;
 - (void)SetPreferJPG: (BOOL)jpg;
 - (void)SetThreshold: (Threshold)threshold;
+- (void)SetPathHinting: (BOOL)path_hinting;
 - (void)Process: (PDFDoc*)doc mode:  (FlattenMode)mode;
 - (void)Destroy;
-- (id)init;
-@end
-
-
-@interface LinkInfo : NSObject
-{
-	void *swigCPtr;
-	BOOL swigCMemOwn;
-}
-- (void*)getCptr;
-- (id)initWithCptr: (void*) cptr;
-- (void)setSwigCMemOwn: (BOOL) own;
-- (void)dealloc;
-- (void)setRect: (PDFRect*)value;
-- (PDFRect*)getRect;
-- (void)setUrl: (SWIGTYPE_p_pdftron__UString*)value;
-- (SWIGTYPE_p_pdftron__UString*)getUrl;
 - (id)init;
 @end
 
@@ -3837,6 +3942,8 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (int)GetCurrentPageNumber;
 - (VectorQuadPoint*)GetCurrentQuads;
 - (void)Destroy;
++ (Highlights*)__Create: (unsigned long long)impl;
+- (unsigned long long)__GetHandle;
 - (id)init;
 @end
 
@@ -4001,6 +4108,8 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (void)RemoveSecurity;
 - (BOOL)HasSignatures;
 - (SignatureHandlerId)AddSignatureHandler: (SignatureHandler*)signature_handler;
+- (unsigned long)AddStdSignatureHandlerFromFile: (NSString*)pkcs12_keyfile pkcs12_keypass:  (NSString*)pkcs12_keypass;
+- (unsigned long)AddStdSignatureHandlerFromBuffer: (NSData*)pkcs12_keybuffer pkcs12_keypass:  (NSString*)pkcs12_keypass;
 - (void)RemoveSignatureHandler: (unsigned long)signature_handler_id;
 - (SignatureHandler*)GetSignatureHandler: (SignatureHandlerId)signature_handler_id;
 - (PDFDocInfo*)GetDocInfo;
@@ -4067,6 +4176,9 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (void)UnlockRead;
 - (BOOL)TryLockRead: (int)milliseconds;
 - (NSString*)GetFileName;
+- (void)GenerateThumbnails: (unsigned int)size;
++ (PDFDoc*)__Create: (unsigned long long)impl;
+- (unsigned long long)__GetHandle;
 - (id)init;- (id)initWithSdfdoc: (SDFDoc*)sdfdoc;- (id)initWithFilepath: (NSString*)filepath;- (id)initWithStream: (Filter*)stream;- (id)initWithBuf: (NSData*)buf buf_size:  (unsigned long)buf_size;
 @end
 
@@ -4080,7 +4192,7 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (id)initWithCptr: (void*) cptr;
 - (void)setSwigCMemOwn: (BOOL) own;
 - (void)dealloc;
-- (NSData*)Rasterize: (Page*)page width:  (int)width height:  (int)height stride:  (int)stride num_comps:  (int)num_comps demult:  (BOOL)demult device_mtx:  (Matrix2D*)device_mtx clip:  (PDFRect*)clip scrl_clp_regions:  (PDFRect*)scrl_clp_regions cancel:  (SWIGTYPE_p_bool*)cancel;
+- (NSData*)Rasterize: (Page*)page width:  (int)width height:  (int)height stride:  (int)stride num_comps:  (int)num_comps demult:  (BOOL)demult device_mtx:  (Matrix2D*)device_mtx clip:  (PDFRect*)clip scrl_clip_regions:  (PDFRect*)scrl_clip_regions;
 - (void)SetDrawAnnotations: (BOOL)render_annots;
 - (void)SetHighlightFields: (BOOL)highlight_fields;
 - (void)SetAntiAliasing: (BOOL)enable_aa;
@@ -4172,15 +4284,16 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 + (BOOL)SetResourcesPath: (NSString*)path;
 + (NSString*)GetResourcesPath;
 + (double)GetVersion;
-+ (CloudErrorCode)ConnectToCloud: (NSString *)api_id api_secret:  (NSString *)api_secret;
++ (CloudErrorCode)ConnectToCloud: (NSString *)api_id api_secret:  (NSString *)api_secret demo_mode:  (BOOL)demo_mode;
 + (void)SetColorManagement: (CMSType)t;
 + (void)SetDefaultDeviceCMYKProfile: (NSString*)icc_filename;
 + (void)SetDefaultDeviceRGBProfile: (NSString*)icc_filename;
 + (void)SetDefaultDiskCachingEnabled: (BOOL)use_disk;
-+ (void)SetViewerCache: (unsigned long)max_cache_size max_zoom_factor:  (unsigned long)max_zoom_factor;
++ (void)SetViewerCache: (unsigned long)max_cache_size on_disk:  (BOOL)on_disk;
 + (BOOL)AddFontSubstWithFontName: (NSString *)fontname fontpath:  (NSString*)fontpath;
 + (BOOL)AddFontSubstWithOrdering: (CharacterOrdering)ordering fontpath:  (NSString*)fontpath;
-+ (BOOL)SetTempPath: (NSString*)temp_path;
++ (void)SetTempPath: (NSString*)temp_path;
++ (void)SetPersistentCachePath: (NSString*)persistent_path;
 - (id)init;
 @end
 
@@ -4213,6 +4326,7 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (BOOL)GotoPreviousPage;
 - (BOOL)SetCurrentPage: (int)page_num;
 - (BOOL)ShowRect: (int)page_num rect:  (PDFRect*)rect;
+- (NSMutableArray*)GetVisiblePages;
 - (double)GetZoom;
 - (BOOL)SetZoom: (double)zoom;
 - (BOOL)SetZoomWithCoord: (int)x y:  (int)y zoom:  (double)zoom;
@@ -4241,7 +4355,7 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (void)OnSize: (int)width height:  (int)height;
 - (BOOL)IsFinishedRendering: (BOOL)visible_region_only;
 - (void)CancelRendering;
-- (void)Update;
+- (void)Update: (BOOL)all;
 - (void)UpdateWithRect: (PDFRect*)update;
 - (void)UpdateWithAnnot: (Annot*)annot page_num:  (int)page_num;
 - (void)UpdatePageLayout;
@@ -4252,7 +4366,7 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (int)GetBufferStride;
 - (void)SetDrawAnnotations: (BOOL)render_annots;
 - (void)SetUrlExtraction: (BOOL)enabled;
-- (SWIGTYPE_pdftron__PDF__PDFView__LinkInfo*)GetLinkAt: (int)x y:  (int)y;
+- (LinkInfo*)GetLinkAt: (int)x y:  (int)y;
 - (void)SetHighlightFields: (BOOL)highlight_fields;
 - (void)SetAntiAliasing: (BOOL)enable_aa;
 - (void)SetPathHinting: (BOOL)path_hinting;
@@ -4271,7 +4385,7 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (BOOL)SelectWithStructure: (double)x1 y1:  (double)y1 page1:  (int)page1 x2:  (double)x2 y2:  (double)y2 page2:  (int)page2;
 - (BOOL)SelectWithHighlights: (Highlights*)highlights;
 - (BOOL)SelectWithSelection: (Selection*)select;
-- (BOOL)FindText: (NSString*)search_str match_case:  (BOOL)match_case match_whole_word:  (BOOL)match_whole_word search_up:  (BOOL)search_up reg_exp:  (BOOL)reg_exp;
+- (void)CancelFindText;
 - (void)SelectAll;
 - (BOOL)HasSelection;
 - (void)ClearSelection;
@@ -4286,25 +4400,26 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (void)SetHorizontalAlign: (int)align;
 - (void)SetVerticalAlign: (int)align;
 - (void)SetPageSpacing: (int)horiz_col_space vert_col_space:  (int)vert_col_space horiz_pad:  (int)horiz_pad vert_pad:  (int)vert_pad;
-+ (void)SetViewerCache: (SDFDoc*)document max_cache_size:  (unsigned long)max_cache_size max_zoom_factor:  (unsigned long)max_zoom_factor;
++ (void)SetViewerCache: (SDFDoc*)document max_cache_size:  (unsigned long)max_cache_size on_disk:  (BOOL)on_disk;
 - (void)Destroy;
 - (Annot*)GetAnnotationAt: (int)x y:  (int)y;
 - (void)SetPageViewMode: (PageViewMode)mode;
 - (PageViewMode)GetPageViewMode;
 - (void)SetPageRefViewMode: (PageViewMode)mode;
 - (PageViewMode)GetPageRefViewMode;
-- (void)SetupThumbnails: (BOOL)use_embedded generate_at_runtime:  (BOOL)generate_at_runtime use_persistent_cache:  (BOOL)use_persistent_cache thumb_max_side_length:  (int)thumb_max_side_length cache_directory_path:  (NSString*)cache_directory_path cache_data_file_size:  (int)cache_data_file_size;
+- (void)SetupThumbnails: (BOOL)use_embedded generate_at_runtime:  (BOOL)generate_at_runtime use_disk_cache:  (BOOL)use_disk_cache thumb_max_side_length:  (int)thumb_max_side_length max_abs_cache_size:  (unsigned long)max_abs_cache_size max_perc_cache_size:  (double)max_perc_cache_size;
 - (void)GetThumbAsync: (int)page_num instance:  (Callback*)instance;
+- (void)CancelAllThumbRequests;
+- (void)SetRequestRenderInWorkerThreadProc: (Callback*)instance;
 - (void)SetFindTextHandler: (Callback*)instance;
 - (void)FindTextAsync: (NSString*)search_str match_case:  (BOOL)match_case match_whole_word:  (BOOL)match_whole_word search_up:  (BOOL)search_up reg_exp:  (BOOL)reg_exp;
 - (BOOL)DownloaderUpdatePage: (SWIGTYPE_TRN_PDFDoc*)doc page_num:  (unsigned int)page_num obj_num:  (unsigned int)obj_num;
 - (void)DownloaderUpdateOutline: (SWIGTYPE_TRN_PDFDoc*)doc;
 - (void)DownloaderUpdateThumb: (SWIGTYPE_TRN_PDFDoc*)doc page_num:  (unsigned int)page_num obj_num:  (unsigned int)obj_num;
 - (void)DownloaderFinishedDownload: (SWIGTYPE_TRN_PDFDoc*)doc;
+- (BOOL)DownloaderIsCorrectDoc: (SWIGTYPE_TRN_PDFDoc*)doc;
 - (void)DownloaderInitialized: (SWIGTYPE_TRN_PDFDoc*)doc;
-- (void)OpenURLAsync: (NSString *)url cache_file:  (NSString*)cache_file password:  (NSString *)password;
-- (void)OpenURL: (NSString *)url password:  (NSString *)password no_ownership:  (BOOL)no_ownership;
-- (void)OpenURLWithCache: (NSString *)url password:  (NSString *)password no_ownership:  (BOOL)no_ownership cache_file:  (NSString*)cache_file;
+- (void)OpenURLAsync: (NSString *)url cache_file:  (NSString*)cache_file password:  (NSString *)password options:  (SWIGTYPE_p_pdftron__PDF__PDFView__HTTPRequestOptions*)options;
 - (void)SetRightToLeftLanguage: (BOOL)flag;
 - (void)PushViewingStates;
 - (void)PopViewingStates: (BOOL)restore;
@@ -4322,6 +4437,7 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (void)ExecuteAction: (Action*)action;
 - (void)SetWrapperCreateTileProc: (Callback*)instance;
 - (void)SetWrapperRemoveTileProc: (Callback*)instance;
+- (void)SetPartDownloadedProc: (Callback*)instance;
 - (id)init;
 @end
 
@@ -4450,41 +4566,6 @@ typedef enum TextSearchModes {  e_reg_expression = 0x0001,
 - (void)SetMode: (unsigned int)mode;
 - (int)GetCurrentPage;
 - (void)Destroy;
-- (id)init;
-@end
-
-
-@interface Appearance : NSObject
-{
-	void *swigCPtr;
-	BOOL swigCMemOwn;
-}
-- (void*)getCptr;
-- (id)initWithCptr: (void*) cptr;
-- (void)setSwigCMemOwn: (BOOL) own;
-- (void)dealloc;
-- (void)setRedactionOverlay: (BOOL)value;
-- (BOOL)getRedactionOverlay;
-- (void)setPositiveOverlayColor: (SWIGTYPE_ColorPt*)value;
-- (SWIGTYPE_ColorPt*)getPositiveOverlayColor;
-- (void)setNegativeOverlayColor: (SWIGTYPE_ColorPt*)value;
-- (SWIGTYPE_ColorPt*)getNegativeOverlayColor;
-- (void)setBorder: (BOOL)value;
-- (BOOL)getBorder;
-- (void)setUseOverlayText: (BOOL)value;
-- (BOOL)getUseOverlayText;
-- (void)setTextFont: (Font*)value;
-- (Font*)getTextFont;
-- (void)setMinFontSize: (double)value;
-- (double)getMinFontSize;
-- (void)setMaxFontSize: (double)value;
-- (double)getMaxFontSize;
-- (void)setTextColor: (ColorPt*)value;
-- (ColorPt*)getTextColor;
-- (void)setHorizTextAlignment: (int)value;
-- (int)getHorizTextAlignment;
-- (void)setVertTextAlignment: (int)value;
-- (int)getVertTextAlignment;
 - (id)init;
 @end
 

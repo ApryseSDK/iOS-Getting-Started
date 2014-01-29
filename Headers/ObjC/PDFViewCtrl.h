@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------------------
-// Copyright (c) 2001-2013 by PDFTron Systems Inc. All Rights Reserved.
+// Copyright (c) 2001-2014 by PDFTron Systems Inc. All Rights Reserved.
 // Consult legal.txt regarding legal and license information.
 //---------------------------------------------------------------------------------------
 //
@@ -94,67 +94,14 @@ typedef enum {
      */
     PDFDoc* m_annot_holder_doc;
 
-
     @private
     UIScrollView* innerScrollView;
     UIScrollView* outerScrollView;
-    PDFViewIOS* IOSPDFView;
-	CGRect Frame;
-    BOOL midZoom;
-    BOOL postZoom;
-    BOOL m_outerPostZoom;
-    BOOL delayRender;
-    BOOL m_downloaded_doc;
-    int touchedPageNumber;
-    NSMutableDictionary* blankPages;
-    NSMutableDictionary* tilesOnScreen;
-    NSMutableArray* tilesPendingDeletion;
-    NSMutableArray* tileBank;
-    double lastYPos;
-    double lastXPos;
-    BOOL searching;
-    NSTimer* m_timer;
-    BOOL m_new_doc;
-    BOOL m_links_enabled;
-    BOOL m_annotation_editing_enabled;
-    BOOL m_progressive_rendering_enabled;
-    double m_progressive_rendering_interval;
-    BOOL m_progressive_render_override;
-    double m_screenScale;
-    BOOL m_retinaEnabled;
-    UIColor* pageColor;
-    int m_tool_switches;
-    BOOL m_no_core_scroll;
-    PDFDoc* m_current_doc;
-    UIColor* m_Last_highlight_colour;
-    BOOL m_request_rending_upon_doc_unlock;
-    TrnZoomLimitMode m_zoom_mode;
-    double m_zoom_limit_ref_zoom;
-    BOOL m_freeze_tile;
-    BOOL m_request_pending;
-    unsigned int m_memoryInUse;
-    NSMutableArray* m_highlights;
-    PDFPoint* pagePtA;
-    PDFPoint* pagePtB;
-    int pageNumber;
-    double totalZoom;
-    double totalXExtra;
-    double totalYExtra;
-    double minimumZoom, maximumZoom;
-    double m_min_scaled_zoom, m_max_scaled_zoom;
-    BOOL m_zoom_enabled;
-    int gapYExtra;
-    int gapXExtra;
-    NSMutableDictionary* thumbnails;
-    PDFDoc* m_default_annots;
-    NSDictionary* AnnotTypeID;
-    BOOL m_rightToLeftLanguage;
-    Selection* m_selections;
-    BOOL m_PreOpenUrlProgRender;
-    BOOL m_OpenUrlExceptionOccured;
 }
 
+
 #pragma mark - Properties
+/** @name Properties */
 
 /**
  * An object that conforms to the PDFViewCtrlDelegate protocol.
@@ -187,7 +134,9 @@ typedef enum {
  */
 @property (nonatomic, assign) BOOL retinaEnabled;
 
+
 #pragma mark - Document Loading and Closing
+/** @name Document Loading and Closing */
 
 /**
  * Associates this PDFViewCtrl with a given PDF document.
@@ -229,20 +178,33 @@ typedef enum {
  * will be used to resume a download. If no cache file is specified, a file is created in
  * the temporary directory.
  *
+ * @param options
+ *
  * @note Currently, only the HTTP protocol is supported.
  *
  * @note This method will acquire a write lock on the document that is displayed in the viewer
  * when this method is called, so it must be free of locks or an exception will be thrown.
  */
--(void)OpenUrl:(NSString*)url WithPDFPassword:(NSString*)password;
--(void)OpenUrl:(NSString*)url WithPDFPassword:(NSString*)password WithCacheFile:(NSString*)fullPath;
+-(void)OpenUrlAsync:(NSString*)url WithPDFPassword:(NSString*)password;
+-(void)OpenUrlAsync:(NSString*)url WithPDFPassword:(NSString*)password WithCacheFile:(NSString*)fullPath;
+-(void)OpenUrlAsync:(NSString*)url WithPDFPassword:(NSString*)password WithCacheFile:(NSString*)fullPath WithOptions:(HTTPRequestOptions*)options;
+
 
 #pragma mark - Page Navigation
+
+/** @name Page Navigation */
 
 /**
  * @return the current page displayed in the view.
  */
 -(int)GetCurrentPage;
+
+/**
+ * Get an array of NSNumbers with the pages currently visible on the screen.
+ *
+ * @return an array of NSNumbers of the pages currently visible on the screen.
+ */
+-(NSMutableArray*)GetVisiblePages;
 
 /**
  * Sets the current page to the given page.
@@ -280,6 +242,8 @@ typedef enum {
 -(bool)GotoPreviousPage;
 
 #pragma mark - Viewer scroll position and zoom level
+
+/** @name Viewer scroll position and zoom level */
 
 /**
  * @return the current horizontal scroll position. The returned value is expressed in the
@@ -374,7 +338,18 @@ typedef enum {
  */
 -(BOOL)ShowRect: (int)page_num rect:  (PDFRect*)rect;
 
+/**
+ * Changes the viewing area to fit a rectangle in viewer coordinates.
+ *
+ * @param rect - the rectangle to zoom in, in viewer coordinates.
+ * @param animated - will animate zoom if YES, will not if NO.
+ */
+- (void)zoomToRect:(CGRect)rect animated:(BOOL)animated;
+
+
 #pragma mark - Page View and Presentation Modes
+
+/** @name Page View and Presentation Modes */
 
 /**
  * @return the current page viewing mode
@@ -423,6 +398,8 @@ typedef enum {
 -(void)SetPagePresentationMode:(TrnPagePresentationMode)mode;
 
 #pragma mark - Viewer Options
+
+/** @name Viewer Options */
 
 /**
  * Enables or disables URL extraction.
@@ -511,17 +488,24 @@ typedef enum {
 -(void)RotateCounterClockwise;
 
 /**
- * @return  The current rotation of this PDFViewCtrl.
+ * @return  The current rotation applied to all pages in PDFViewCtrl.
  */
 -(Rotate)GetRotation;
 
 
 #pragma mark - Rendering Options
 
+/** @name Rendering Options */
+
 /**
  * Sets whether the control will render progressively or will just
  * draw once the entire view has been rendered
+ *
  * @param progressive if true the view will be rendered progressively
+ *
+ * @param delayMilliseconds delay before the progressive rendering timer is started.
+ *
+ * @param intervalMilliseconds delay between refreshes. Default is 750 ms.
  *
  * @note Progressive rendering is useful when a PDF page contain lots of elements
  * (e.g. many vector paths, text, or many little images). When progressive rendering
@@ -529,16 +513,8 @@ typedef enum {
  * be able to see partially rendered page. If a page contains only a single large
  * image, there would be no visible benefit from progressive rendering.
  */
--(void)SetProgressiveRendering:(BOOL)progressive;
+-(void)SetProgressiveRendering:(BOOL)progressive withInitialDelay:(int)delayMilliseconds withInterval:(int)intervalMilliseconds;
 
-/**
- * Sets the interval upon which the device will refresh the display.
- * Note that on single core devices (iPad 1, iPhone 4 and earlier), updating the display will
- * slightly slow down the time to complete rendering.
- *
- * @param seconds - Number of seconds between refreshes.
- */
--(void)SetProgressiveRenderingInterval:(double)seconds;
 
 /**
  * Enable or disable path hinting.
@@ -571,7 +547,7 @@ typedef enum {
  * @param stroke_adjust if true auto stroke adjustment is enabled. Currently, this would
  * make lines with sub-pixel width to be one-pixel wide. This option is turned on by default.
  */
--(void)SetThinLineAdjustmentPixelGrid:(bool)pixel_grid StrokeAdjust:(bool)stroke_adjust;
+-(void)SetThinLineAdjustment:(bool)pixel_grid StrokeAdjust:(bool)stroke_adjust;
 
 /**
  * Enable or disable image smoothing.
@@ -657,6 +633,8 @@ typedef enum {
 
 #pragma mark - Text Search
 
+/** @name Text Search */
+
 /**
  * Selects text by searching for a given string of text.
  *
@@ -673,7 +651,15 @@ typedef enum {
  */
 -(BOOL)FindText:(NSString*)searchString MatchCase:(BOOL)matchCase MatchWholeWord:(BOOL)matchWholeWord SearchUp:(BOOL)searchUp RegExp:(BOOL)regExp;
 
+/**
+ * Cancel the text search thread if FindText() is started in a different thread. Note that if the text search thread
+ * is currently being suspended by the render thread, it will only be canceled after it is awaken by the render thread.
+ */
+-(void)CancelFindText;
+
 #pragma mark - Text Selection
+
+/** @name Text Selection */
 
 /**
  * Sets the selection mode used for text highlighting.
@@ -749,30 +735,20 @@ typedef enum {
 -(BOOL)SelectX1:(double)x1 Y1:(double)y1 PageNumber1:(int)pageNumber1 X2:(double)x2 Y2:(double)y2 PageNumber2:(int)pageNumber2;
 
 /**
- * Selects text within the given region using the current text selection mode.
+ * Selects text identified by Highlights.
  *
  * @return true if some text was selected, false otherwise.
- * @param x1, y1, x2, y2 - two points (screen coordinates, origin located at the upper-left corner of this view)
- * defining the opposite corners of a selection rectangle.
- */
--(BOOL)SelectWithTextSelect: (double)x1 y1:  (double)y1 x2:  (double)x2 y2:  (double)y2;
-
-/**
- * Selects texts using structural mode.
- *
- * @return true if some texts were selected, false otherwise.
- * @param (x1, y1), page1 - the first selection point (in page coordinates space) on page page1
- * @param (x2, y2), page2 - the second selection point (in page coordinates space) on page page2
- */
--(BOOL)SelectWithStructure: (double)x1 y1:  (double)y1 page1:  (int)page1 x2:  (double)x2 y2:  (double)y2 page2:  (int)page2;
-
-/**
- * Selects texts identified by Highlights.
- *
- * @return true if some texts were selected, false otherwise.
- * @param highlights - an instance of Highlights class.
+ * @param highlights - an instance of the Highlights class.
  */
 -(BOOL)SelectWithHighlights: (Highlights*)highlights;
+
+/**
+ * Selects text identified by Selection.
+ *
+ * @return true if some text was selected, false otherwise.
+ * @param select - an instance of the Selection class.
+ */
+-(BOOL)SelectWithSelection: (Selection*)select;
 
 /**
  * Selects all text on the page.
@@ -781,50 +757,36 @@ typedef enum {
 
 #pragma mark - User Interaction Options
 
-/** 
- * Enables or disables the user's ability to create and interact with annotations, 
- * except for the ability to follow links (that controlled with EnableLinkActivation).
- *
- * Default is enabled.
- *
- * @param enable - If annotation editing is to be enabled.
- *
- */
--(void)SetAnnotationEditingEnabled:(BOOL)enable;
+/** @name User Interaction Options */
 
-/**
- * Gets whether annotation editing is enabled.
- * 
- * @return true if annotation editing is enabled.
- */
--(BOOL)AnnotationEditingEnabled;
-
-/**
- * Enables or disables whether links are activated when the user clicks on them
- * @param enable if true enable link activation, otherwise disable it
- */
--(void)EnableLinkActivation:(BOOL)enable;
-
-/**
- * Gets whether link activation is enabled.
- * 
- * @return true if link activation is enabled.
- */
--(BOOL)LinkActivationEnabled;
 
 /**
  * Returns the annotation present at screen coordinates (x, y). If no annotation is present,
  * callling IsValid on the returned annotation will return false.
- * You must lock the doc when retrieving an annotation.
+ * You must acquire a read lock for the doc when retrieving an annotation.
  *
- * @param x - Number of seconds between refreshes.
- * @param y - Number of seconds between refreshes.
+ * @param x - The x location in screen coordinates
+ * @param y - The y location in screen coordinates
  *
  * @return the annotation present at screen coordinates (x, y).
  */
 -(Annot*)GetAnnotationAt: (int)x y:  (int)y;
 
+/**
+ * Returns the annotation present at screen coordinates (x, y). If no link is present,
+ * callling length on the string returned by getUrl of the returned LinkInfo object will be <= 0.
+ * You must acquire a read lock for doc when retrieving a LinkInfo object.
+ *
+ * @param x - The x location in screen coordinates
+ * @param y - The y location in screen coordinates
+ *
+ * @return link information for a link present at screen coordinates (x, y).
+ */
+-(LinkInfo*)GetLinkAt:(int)x y:(int)y;
+
 #pragma mark - Gesture Recognizer Targets
+
+/** @name Gesture Recognizer Targets */
 
 // These methods are called in response to gesture recognizers and are
 // included in the header file so that subclasses may extend or override the functionality.
@@ -847,6 +809,8 @@ typedef enum {
 
 
 #pragma mark - Document Locking/Unlocking
+
+/** @name Document Locking/Unlocking */
 
 // Write Locks
 
@@ -912,20 +876,21 @@ typedef enum {
 /**
  * Sets the minimum and maximum zoom bounds of PDFViewCtrl.
  *
+ * @param mode - defines how the zoom bounds are to be used
+ *
  * @param min - the minimum zoom bound
  *
  * @param max - the maximum zoom bound
- *
- * @param mode - defines how the zoom bounds are to be used
  *
  * @note if the zoom limits are relative, 1.0 is defined as the zoom level
  * where the document is displayed in page fit mode, where the entire page
  * is visible on screen.
  */
--(void)SetZoomMinimum:(double)min Maxiumum:(double)max Mode:(TrnZoomLimitMode)mode;
-
+-(void)SetZoomLimits:(TrnZoomLimitMode)mode Minimum:(double)min Maxiumum:(double)max;
 
 #pragma mark - Coordinate Coversion
+
+/** @name Coordinate Coversion */
 
 /**
  * @return  the number of the page located under the given screen 
@@ -999,6 +964,8 @@ typedef enum {
 
 #pragma mark - Viewer Dimensions
 
+/** @name Viewer Dimensions */
+
 /**
  * Returns the current canvas width.
  */
@@ -1010,6 +977,8 @@ typedef enum {
 -(double)GetCanvasHeight;
 
 #pragma mark - Rendering Starting/Stopping
+
+/** @name Rendering Starting/Stopping */
 
 /**
  *
@@ -1033,6 +1002,11 @@ typedef enum {
 -(void)Update;
 
 /**
+ * Redraws the contents of the buffer.
+ */
+-(void)Update:(bool)all;
+
+/**
  * Redraws the area covered with a given annotation.
  * @param annot The annotation to update.
  * @param page_num The page number on which the annotation is located.
@@ -1053,13 +1027,15 @@ typedef enum {
 
 #pragma mark - Memory control
 
+/** @name Memory control */
+
 /**
  * Set the suggested memory size of the rendered content.
  *
  * PDFViewCtrl keeps off-screen content in order to achieve better viewing
  * experience; however, this increases memory usage. By default, PDFViewCtrl
  * will use 80% of available memory to render on-screen and off-screen content.
- * The value set here will be overidden if PurgeCachedMemory is called.
+ * The value set here will be overidden if PurgeMemory is called.
  *
  * @param allowed_max the allowed heap memory usage in MB.
  *
@@ -1071,7 +1047,7 @@ typedef enum {
  *       not the entire memory footprint of the control.
  *       </p>
  */
--(void)SetContentBufferSize:(long)allowedMax;
+-(void)SetRenderedContentBufferSize:(long)allowedMax;
 
 /**
  * Removes all non-visible portions of document to reduce memory consumption. This will
@@ -1082,7 +1058,7 @@ typedef enum {
  * May slightly slow down the time to complete rendering.
  *
  */
--(void)PurgeCachedMemory;
+-(void)PurgeMemory;
 
 /**
  * Enables of disables caching of images, fonts, and other resources. Disabling caching
@@ -1093,38 +1069,50 @@ typedef enum {
  */
 -(void)SetCaching: (BOOL)enabled;
 
-#pragma mark - Thumbnails
 
 /**
- * Enables or disables the use of thumbnails which are displayed when rendered
- * content is not yet available.
+ *	Sets the cache parameters of the page cache on disk (which caches content streams and
+ *	mipmapped images) for this specific document.  These parameters will override the default cache
+ *  parameters.  Note that if this function is called after the document has been rasterized, it has no
+ *  effect.
  *
- * <p>
- * Thumbnail view is used before a PDF page is fully rendered. If use_embedded is
- * enabled, thumbnails that are embedded in a PDF document will be used. If
- * generate_at_runtime is enabled, thumbnails will be generated at runtime. If both
- * use_embedded and generate_at_runtime are enabled, thumbnails will only be
- * generated if embedded thumbnails are not present.
- * </p>
+ *  @param document - The document whose settings will be modified
+ *	@param max_cache_size - The maximum size, in bytes, of the entire document's page cache
+ *	@param on_disk - Whether or not to store the cache on disk
  *
- * <p>
- * If runtime thumb view generation is enabled, the thumbnail maximum side
- * length will be used as a reference to calculate the thumbnail resolution.
- * </p>
- *
- * @param use_embedded
- *            If true, embedded thumbnails will be used; otherwise, they are ignored
- * @param generate_at_runtime
- *            If true, runtime thumbnail view generation is enabled
- * @param thumb_max_side_length
- *            If value is higher than zero, it will be used as a reference
- *            to calculate the thumbnail resolution. Pass zero to use
- *            the default internal value.
  */
-- (void)SetupThumbnails: (BOOL)use_embedded generate_at_runtime:  (BOOL)generate_at_runtime use_persistent_cache:  (BOOL)use_persistent_cache thumb_max_side_length:  (int)thumb_max_side_length cache_directory_path:  (NSString*)cache_directory_path cache_data_file_size:  (int)cache_data_file_size;
++ (void)SetViewerCache: (SDFDoc*)document max_cache_size:  (unsigned long)max_cache_size  on_disk:  (BOOL)on_disk;
+
+#pragma mark - Thumbnails
+
+/** @name Thumbnails */
+
+/**
+ * Specify the different thumbnail settings for the viewer.
+ *
+ * @param use_embedded Enables or disables using thumbnails embedded in the PDF document as a preview of the rendered page. (Currently ignored - future versions may take advantage of embedded thumbnails)
+ * @param generate_at_runtime Enables or disables generating thumbnails at runtime.
+ * @param use_disk_cache Enables or disables caching thumbnails in a temporary disk file.
+ * @param thumb_max_side_length The maximum size, in pixels, of a dimension of generated thumbnails.
+ * @param max_abs_cache_size The absolute maximum size on disk, in bytes, for the temporary thumbnail cache.
+ * @param max_perc_cache_size The maximum percentage of free disk space, in the range 0 - 1.0, that the cache can take up.
+ */
+- (void)SetupThumbnails: (BOOL)use_embedded generate_at_runtime:  (BOOL)generate_at_runtime use_disk_cache:  (BOOL)use_disk_cache thumb_max_side_length:  (int)thumb_max_side_length max_abs_cache_size:  (unsigned long)max_abs_cache_size max_perc_cache_size:  (double)max_perc_cache_size;
+
+/**
+ * Requests a thumbnail from the document, which is returned in the delegate method GotThumbAsync:(int)page_num thumbImage:(UIImage*)image;
+ */
+-(void)GetThumbAsync:(int)page_num;
+
+/**
+ * Cancels all outstanding thumbnail requests queued by GetThumbAsync:
+ */
+- (void)CancelAllThumbRequests;
 
 
 #pragma mark - Miscellaneous
+
+/** @name Miscellaneous */
 
 /**
  * @return the total number of pages in the document.
@@ -1157,11 +1145,51 @@ typedef enum {
 -(void)postCustomEvent:(id)userData;
 
 /**
+ * Will cause PDFViewCtrl to scroll the content so that the onscreen keyboard does not hide the
+ * content being edited. See FormFillTool.m in the standard libTools distribution for example usage.
+ *
+ * @param notification The notification object returned by a UIKeyboardWillShowNotification notification.
+ * @param rectToNotOverlapWith The rectangle, in screen coordinates, that the keyboard should not
+ * overlap with.
+ *
+ */
+-(void)keyboardWillShow:(NSNotification*)notification rectToNotOverlapWith:(CGRect)rect;
+
+/**
+ * Will cause PDFViewCtrl to reset the scroll position after a call to keyboardWillShow:rectToNotOverlapWith.
+ *
+ * @param notification The notificaion object returned by a UIKeyboardWillHideNotification notification.
+ *
+ */
+-(void)keyboardWillHide:(NSNotification*)notification;
+
+/**
+ * The zoomScale of PDFViewCtrl. This will return 1.0 except when the control is actively being scaled
+ * for example by a pinch gesture. To get/set the zoom level of the displayed PDF, use GetZoom and SetZoom.
+ *
+ */
+-(double)zoomScale;
+
+/**
  * Requests action object to be executed by PDFViewCtrl. Action must belong to the document
  * currently displayed in PDFViewCtrl.
  * @param action object that is to be executed.
  */
 -(void)ExecuteAction: (Action*)action;
+
+/**
+ * Sets if document is to be presented for a left-to-right or right-to-left language.
+ * Default is left-to-right.
+ *
+ * @param isRightToLeft true if language is right-to-left; false otherwise.
+ *
+ */
+-(void)SetRightToLeftLanguage:(BOOL)isRightToLeft;
+
+/**
+ * @return true if PDFViewCtrl is set to display a PDF with a right-to-left language; false otherwise.
+ */
+-(BOOL)GetRightToLeftLanguage;
 
 @end
 
@@ -1175,6 +1203,16 @@ typedef enum {
 @protocol PDFViewCtrlDelegate<NSObject>
 
 @optional
+
+/**
+ * Tells the delegate that a render job is complete.
+ */
+- (void)onRenderFinished;
+
+/**
+ * Tells the delegate that the page layout has changed (such as from cover to cover facing).
+ */
+- (void)onLayoutChanged;
 
 /** Tells the delegate that the current page number changes.
  *
@@ -1240,6 +1278,17 @@ typedef enum {
  *
  */
 - (void)customEvent:(id)userData;
+
+/**
+ * Returns a thumbnail requested by PDFViewCtrl's selector GetThumbAsync:.
+ *
+ * @param page_num The page number of the thumbnail.
+ *
+ * @param image The thumbnail image.
+ *
+ */
+-(void)GotThumbAsync:(int)page_num thumbImage:(UIImage*)image;
+
 
 /** @name pdfScrollView methods */
 
@@ -1517,6 +1566,18 @@ typedef enum {
  * @return a newly instantiated UIView that conforms to the ToolDelegate protocol.
  */
 - (UIView<ToolDelegate>*)getNewTool;
+
+/**
+ * A string that will be used to set the author field of annotations that are created.
+ *
+ */
+@property (nonatomic, copy) NSString* annotationAuthor;
+
+/**
+ * A string that will be used to set the author field of annotations that are created.
+ *
+ */
+@property (readonly) BOOL createsAnnotation;
 
 @optional
 
@@ -1831,6 +1892,12 @@ typedef enum {
  */
 - (void)onLayoutChanged;
 
+/**
+ * Tells the delegate that tool has been attached to the view hierarchy and can now become
+ * the first responder.
+ */
+- (void)onToolAttachedToViewHierarchy;
+
 /** Tells the delegate that the current page number changes.
  *
  * @param oldPageNumber The previous page number.
@@ -1855,6 +1922,11 @@ typedef enum {
  *
  */
 - (void)onSetDoc;
+
+/**
+ * Tells the delegate that a render job is complete.
+ */
+- (void)onRenderFinished;
 
 @end
 

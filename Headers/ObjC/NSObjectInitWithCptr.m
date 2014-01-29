@@ -1,6 +1,7 @@
-//
-//  Copyright 2011-2012 PDFTron Systems Inc All rights reserved.
-//
+//---------------------------------------------------------------------------------------
+// Copyright (c) 2001-2014 by PDFTron Systems Inc. All Rights Reserved.
+// Consult legal.txt regarding legal and license information.
+//---------------------------------------------------------------------------------------
 
 #import "NSObjectInitWithCptr.h"
 

@@ -12,7 +12,7 @@
 		BC5CEC3F17A1ED5200405806 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5CEC3E17A1ED5200405806 /* CoreGraphics.framework */; };
 		BC5CEC4517A1ED5200405806 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC5CEC4317A1ED5200405806 /* InfoPlist.strings */; };
 		BC5CEC4717A1ED5200405806 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5CEC4617A1ED5200405806 /* main.m */; };
-		BC5CEC4B17A1ED5300405806 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5CEC4A17A1ED5300405806 /* AppDelegate.m */; };
+		BC5CEC4B17A1ED5300405806 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = BC5CEC4A17A1ED5300405806 /* AppDelegate.mm */; };
 		BC5CEC4D17A1ED5300405806 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5CEC4C17A1ED5300405806 /* Default.png */; };
 		BC5CEC4F17A1ED5300405806 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5CEC4E17A1ED5300405806 /* Default@2x.png */; };
 		BC5CEC5117A1ED5300405806 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5CEC5017A1ED5300405806 /* Default-568h@2x.png */; };
@@ -20,25 +20,14 @@
 		BC5CEC5717A1ED5400405806 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5CEC5517A1ED5400405806 /* ViewController.xib */; };
 		BC5CECC517A1F4B000405806 /* NSObjectInitWithCptr.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5CEC9F17A1F4B000405806 /* NSObjectInitWithCptr.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BC5CECC617A1F4B000405806 /* libPDFNet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5CECA817A1F4B000405806 /* libPDFNet.a */; };
-		BC5CECC717A1F4B000405806 /* loupe.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5CECAA17A1F4B000405806 /* loupe.png */; };
 		BC5CECC817A1F4B000405806 /* PopupIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5CECAB17A1F4B000405806 /* PopupIcon.png */; };
-		BC5CECC917A1F4B000405806 /* select_ball.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5CECAC17A1F4B000405806 /* select_ball.png */; };
-		BC5CECCA17A1F4B000405806 /* select_ball@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5CECAD17A1F4B000405806 /* select_ball@2x.png */; };
-		BC5CECCB17A1F4B000405806 /* bar_select.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5CECB017A1F4B000405806 /* bar_select.png */; };
-		BC5CECCC17A1F4B000405806 /* colormap.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5CECB117A1F4B000405806 /* colormap.png */; };
-		BC5CECCD17A1F4B000405806 /* ColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5CECB317A1F4B000405806 /* ColorPickerView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		BC5CECCE17A1F4B000405806 /* ColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5CECB517A1F4B000405806 /* ColorPickerViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		BC5CECCF17A1F4B000405806 /* ColorPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5CECB617A1F4B000405806 /* ColorPickerViewController.xib */; };
-		BC5CECD017A1F4B000405806 /* ColorSwatchView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5CECB817A1F4B000405806 /* ColorSwatchView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		BC5CECD117A1F4B000405806 /* crosshair.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5CECBA17A1F4B000405806 /* crosshair.png */; };
-		BC5CECD217A1F4B000405806 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5CECBC17A1F4B000405806 /* GradientView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		BC5CECD317A1F4B000405806 /* UIColor-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5CECBE17A1F4B000405806 /* UIColor-Expanded.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		BC5CECD417A1F4B000405806 /* UIColor-HSVAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5CECC017A1F4B000405806 /* UIColor-HSVAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BC5CECD517A1F4B000405806 /* libTools.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5CECC117A1F4B000405806 /* libTools.a */; };
 		BC5CECD617A1F4B000405806 /* mech.pdf in Resources */ = {isa = PBXBuildFile; fileRef = BC5CECC317A1F4B000405806 /* mech.pdf */; };
 		BC5CECD717A1F4B000405806 /* pass_is_macosx.pdf in Resources */ = {isa = PBXBuildFile; fileRef = BC5CECC417A1F4B000405806 /* pass_is_macosx.pdf */; };
 		BC5CECD917A1F4CF00405806 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5CECD817A1F4CF00405806 /* QuartzCore.framework */; };
 		BC5CECDB17A1F4D700405806 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5CECDA17A1F4D700405806 /* CoreText.framework */; };
+		BCFC4B3F1899734E00D657DF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFC4B3E1899734E00D657DF /* AVFoundation.framework */; };
+		BCFC4B411899735400D657DF /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFC4B401899735400D657DF /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +40,7 @@
 		BC5CEC4617A1ED5200405806 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BC5CEC4817A1ED5300405806 /* PTTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PTTest-Prefix.pch"; sourceTree = "<group>"; };
 		BC5CEC4917A1ED5300405806 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		BC5CEC4A17A1ED5300405806 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BC5CEC4A17A1ED5300405806 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		BC5CEC4C17A1ED5300405806 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		BC5CEC4E17A1ED5300405806 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		BC5CEC5017A1ED5300405806 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -67,32 +56,15 @@
 		BC5CECA517A1F4B000405806 /* PanTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanTool.h; sourceTree = "<group>"; };
 		BC5CECA617A1F4B000405806 /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
 		BC5CECA817A1F4B000405806 /* libPDFNet.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPDFNet.a; sourceTree = "<group>"; };
-		BC5CECAA17A1F4B000405806 /* loupe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loupe.png; sourceTree = "<group>"; };
 		BC5CECAB17A1F4B000405806 /* PopupIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PopupIcon.png; sourceTree = "<group>"; };
-		BC5CECAC17A1F4B000405806 /* select_ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_ball.png; sourceTree = "<group>"; };
-		BC5CECAD17A1F4B000405806 /* select_ball@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select_ball@2x.png"; sourceTree = "<group>"; };
-		BC5CECB017A1F4B000405806 /* bar_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar_select.png; sourceTree = "<group>"; };
-		BC5CECB117A1F4B000405806 /* colormap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colormap.png; sourceTree = "<group>"; };
-		BC5CECB217A1F4B000405806 /* ColorPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerView.h; sourceTree = "<group>"; };
-		BC5CECB317A1F4B000405806 /* ColorPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPickerView.m; sourceTree = "<group>"; };
-		BC5CECB417A1F4B000405806 /* ColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerViewController.h; sourceTree = "<group>"; };
-		BC5CECB517A1F4B000405806 /* ColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPickerViewController.m; sourceTree = "<group>"; };
-		BC5CECB617A1F4B000405806 /* ColorPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorPickerViewController.xib; sourceTree = "<group>"; };
-		BC5CECB717A1F4B000405806 /* ColorSwatchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorSwatchView.h; sourceTree = "<group>"; };
-		BC5CECB817A1F4B000405806 /* ColorSwatchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorSwatchView.m; sourceTree = "<group>"; };
-		BC5CECB917A1F4B000405806 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		BC5CECBA17A1F4B000405806 /* crosshair.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crosshair.png; sourceTree = "<group>"; };
-		BC5CECBB17A1F4B000405806 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
-		BC5CECBC17A1F4B000405806 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
-		BC5CECBD17A1F4B000405806 /* UIColor-Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor-Expanded.h"; sourceTree = "<group>"; };
-		BC5CECBE17A1F4B000405806 /* UIColor-Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor-Expanded.m"; sourceTree = "<group>"; };
-		BC5CECBF17A1F4B000405806 /* UIColor-HSVAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor-HSVAdditions.h"; sourceTree = "<group>"; };
-		BC5CECC017A1F4B000405806 /* UIColor-HSVAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor-HSVAdditions.m"; sourceTree = "<group>"; };
 		BC5CECC117A1F4B000405806 /* libTools.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTools.a; sourceTree = "<group>"; };
 		BC5CECC317A1F4B000405806 /* mech.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = mech.pdf; sourceTree = "<group>"; };
 		BC5CECC417A1F4B000405806 /* pass_is_macosx.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pass_is_macosx.pdf; sourceTree = "<group>"; };
 		BC5CECD817A1F4CF00405806 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BC5CECDA17A1F4D700405806 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		BC7E8BD418997204001A1B7E /* pdfnet.res */ = {isa = PBXFileReference; lastKnownFileType = file; path = pdfnet.res; sourceTree = "<group>"; };
+		BCFC4B3E1899734E00D657DF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BCFC4B401899735400D657DF /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +72,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCFC4B411899735400D657DF /* MediaPlayer.framework in Frameworks */,
+				BCFC4B3F1899734E00D657DF /* AVFoundation.framework in Frameworks */,
 				BC5CECDB17A1F4D700405806 /* CoreText.framework in Frameworks */,
 				BC5CECD917A1F4CF00405806 /* QuartzCore.framework in Frameworks */,
 				BC5CEC3B17A1ED5200405806 /* UIKit.framework in Frameworks */,
@@ -136,6 +110,8 @@
 		BC5CEC3917A1ED5200405806 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BCFC4B401899735400D657DF /* MediaPlayer.framework */,
+				BCFC4B3E1899734E00D657DF /* AVFoundation.framework */,
 				BC5CECDA17A1F4D700405806 /* CoreText.framework */,
 				BC5CECD817A1F4CF00405806 /* QuartzCore.framework */,
 				BC5CEC3A17A1ED5200405806 /* UIKit.framework */,
@@ -149,7 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				BC5CEC4917A1ED5300405806 /* AppDelegate.h */,
-				BC5CEC4A17A1ED5300405806 /* AppDelegate.m */,
+				BC5CEC4A17A1ED5300405806 /* AppDelegate.mm */,
 				BC5CEC5217A1ED5300405806 /* ViewController.h */,
 				BC5CEC5317A1ED5300405806 /* ViewController.m */,
 				BC5CEC5517A1ED5400405806 /* ViewController.xib */,
@@ -175,17 +151,9 @@
 		BC5CEC9B17A1F4B000405806 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				BC5CEC9C17A1F4B000405806 /* CPP */,
 				BC5CEC9D17A1F4B000405806 /* ObjC */,
 			);
 			path = Headers;
-			sourceTree = "<group>";
-		};
-		BC5CEC9C17A1F4B000405806 /* CPP */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CPP;
 			sourceTree = "<group>";
 		};
 		BC5CEC9D17A1F4B000405806 /* ObjC */ = {
@@ -214,6 +182,7 @@
 		BC5CECA717A1F4B000405806 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				BC7E8BD418997204001A1B7E /* pdfnet.res */,
 				BC5CECA817A1F4B000405806 /* libPDFNet.a */,
 				BC5CECA917A1F4B000405806 /* libTools Required Files */,
 				BC5CECC117A1F4B000405806 /* libTools.a */,
@@ -224,45 +193,9 @@
 		BC5CECA917A1F4B000405806 /* libTools Required Files */ = {
 			isa = PBXGroup;
 			children = (
-				BC5CECAA17A1F4B000405806 /* loupe.png */,
 				BC5CECAB17A1F4B000405806 /* PopupIcon.png */,
-				BC5CECAC17A1F4B000405806 /* select_ball.png */,
-				BC5CECAD17A1F4B000405806 /* select_ball@2x.png */,
-				BC5CECAE17A1F4B000405806 /* Third Party */,
 			);
 			path = "libTools Required Files";
-			sourceTree = "<group>";
-		};
-		BC5CECAE17A1F4B000405806 /* Third Party */ = {
-			isa = PBXGroup;
-			children = (
-				BC5CECAF17A1F4B000405806 /* Color Picker */,
-			);
-			path = "Third Party";
-			sourceTree = "<group>";
-		};
-		BC5CECAF17A1F4B000405806 /* Color Picker */ = {
-			isa = PBXGroup;
-			children = (
-				BC5CECB017A1F4B000405806 /* bar_select.png */,
-				BC5CECB117A1F4B000405806 /* colormap.png */,
-				BC5CECB217A1F4B000405806 /* ColorPickerView.h */,
-				BC5CECB317A1F4B000405806 /* ColorPickerView.m */,
-				BC5CECB417A1F4B000405806 /* ColorPickerViewController.h */,
-				BC5CECB517A1F4B000405806 /* ColorPickerViewController.m */,
-				BC5CECB617A1F4B000405806 /* ColorPickerViewController.xib */,
-				BC5CECB717A1F4B000405806 /* ColorSwatchView.h */,
-				BC5CECB817A1F4B000405806 /* ColorSwatchView.m */,
-				BC5CECB917A1F4B000405806 /* Constants.h */,
-				BC5CECBA17A1F4B000405806 /* crosshair.png */,
-				BC5CECBB17A1F4B000405806 /* GradientView.h */,
-				BC5CECBC17A1F4B000405806 /* GradientView.m */,
-				BC5CECBD17A1F4B000405806 /* UIColor-Expanded.h */,
-				BC5CECBE17A1F4B000405806 /* UIColor-Expanded.m */,
-				BC5CECBF17A1F4B000405806 /* UIColor-HSVAdditions.h */,
-				BC5CECC017A1F4B000405806 /* UIColor-HSVAdditions.m */,
-			);
-			path = "Color Picker";
 			sourceTree = "<group>";
 		};
 		BC5CECC217A1F4B000405806 /* Test Files */ = {
@@ -330,14 +263,7 @@
 				BC5CEC4F17A1ED5300405806 /* Default@2x.png in Resources */,
 				BC5CEC5117A1ED5300405806 /* Default-568h@2x.png in Resources */,
 				BC5CEC5717A1ED5400405806 /* ViewController.xib in Resources */,
-				BC5CECC717A1F4B000405806 /* loupe.png in Resources */,
 				BC5CECC817A1F4B000405806 /* PopupIcon.png in Resources */,
-				BC5CECC917A1F4B000405806 /* select_ball.png in Resources */,
-				BC5CECCA17A1F4B000405806 /* select_ball@2x.png in Resources */,
-				BC5CECCB17A1F4B000405806 /* bar_select.png in Resources */,
-				BC5CECCC17A1F4B000405806 /* colormap.png in Resources */,
-				BC5CECCF17A1F4B000405806 /* ColorPickerViewController.xib in Resources */,
-				BC5CECD117A1F4B000405806 /* crosshair.png in Resources */,
 				BC5CECD617A1F4B000405806 /* mech.pdf in Resources */,
 				BC5CECD717A1F4B000405806 /* pass_is_macosx.pdf in Resources */,
 			);
@@ -351,15 +277,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC5CEC4717A1ED5200405806 /* main.m in Sources */,
-				BC5CEC4B17A1ED5300405806 /* AppDelegate.m in Sources */,
+				BC5CEC4B17A1ED5300405806 /* AppDelegate.mm in Sources */,
 				BC5CEC5417A1ED5300405806 /* ViewController.m in Sources */,
 				BC5CECC517A1F4B000405806 /* NSObjectInitWithCptr.m in Sources */,
-				BC5CECCD17A1F4B000405806 /* ColorPickerView.m in Sources */,
-				BC5CECCE17A1F4B000405806 /* ColorPickerViewController.m in Sources */,
-				BC5CECD017A1F4B000405806 /* ColorSwatchView.m in Sources */,
-				BC5CECD217A1F4B000405806 /* GradientView.m in Sources */,
-				BC5CECD317A1F4B000405806 /* UIColor-Expanded.m in Sources */,
-				BC5CECD417A1F4B000405806 /* UIColor-HSVAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,7 +368,7 @@
 		BC5CEC5B17A1ED5400405806 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_CXX_LIBRARY = "libc++";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PTTest/PTTest-Prefix.pch";
 				INFOPLIST_FILE = "PTTest/PTTest-Info.plist";
@@ -465,7 +385,7 @@
 		BC5CEC5C17A1ED5400405806 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_CXX_LIBRARY = "libc++";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PTTest/PTTest-Prefix.pch";
 				INFOPLIST_FILE = "PTTest/PTTest-Info.plist";

@@ -13,28 +13,6 @@
 #import <Foundation/Foundation.h>
 
 
-@interface SWIGTYPE_TRN_PDFViewSelection : NSObject
-{
-	void *swigCPtr;
-	BOOL swigCMemOwn;
-}
-- (void*)getCptr;
-- (id)initWithCptr: (void*) cptr;
-- (void)setSwigCMemOwn: (BOOL) own;
-@end
-
-
-@interface SWIGTYPE_p_Selection : NSObject
-{
-	void *swigCPtr;
-	BOOL swigCMemOwn;
-}
-- (void*)getCptr;
-- (id)initWithCptr: (void*) cptr;
-- (void)setSwigCMemOwn: (BOOL) own;
-@end
-
-
 @interface SWIGTYPE_p_unsigned_char : NSObject
 {
 	void *swigCPtr;
@@ -79,17 +57,6 @@
 @end
 
 
-@interface SWIGTYPE_p_pdftron__UString : NSObject
-{
-	void *swigCPtr;
-	BOOL swigCMemOwn;
-}
-- (void*)getCptr;
-- (id)initWithCptr: (void*) cptr;
-- (void)setSwigCMemOwn: (BOOL) own;
-@end
-
-
 @interface SWIGTYPE_p_void : NSObject
 {
 	void *swigCPtr;
@@ -112,18 +79,7 @@
 @end
 
 
-@interface SWIGTYPE_pdftron__PDF__PDFView__LinkInfo : NSObject
-{
-	void *swigCPtr;
-	BOOL swigCMemOwn;
-}
-- (void*)getCptr;
-- (id)initWithCptr: (void*) cptr;
-- (void)setSwigCMemOwn: (BOOL) own;
-@end
-
-
-@interface SWIGTYPE_ColorPt : NSObject
+@interface SWIGTYPE_TRN_PDFDoc : NSObject
 {
 	void *swigCPtr;
 	BOOL swigCMemOwn;
@@ -145,7 +101,7 @@
 @end
 
 
-@interface SWIGTYPE_TRN_PDFDoc : NSObject
+@interface SWIGTYPE_p_pdftron__PDF__PDFView__HTTPRequestOptions : NSObject
 {
 	void *swigCPtr;
 	BOOL swigCMemOwn;
@@ -168,17 +124,6 @@
 
 
 @interface SWIGTYPE_TRN_SecurityHandler : NSObject
-{
-	void *swigCPtr;
-	BOOL swigCMemOwn;
-}
-- (void*)getCptr;
-- (id)initWithCptr: (void*) cptr;
-- (void)setSwigCMemOwn: (BOOL) own;
-@end
-
-
-@interface SWIGTYPE_p_bool : NSObject
 {
 	void *swigCPtr;
 	BOOL swigCMemOwn;
@@ -212,6 +157,17 @@
 
 
 @interface SWIGTYPE_TRN_TextExtractorLine : NSObject
+{
+	void *swigCPtr;
+	BOOL swigCMemOwn;
+}
+- (void*)getCptr;
+- (id)initWithCptr: (void*) cptr;
+- (void)setSwigCMemOwn: (BOOL) own;
+@end
+
+
+@interface SWIGTYPE_Int64 : NSObject
 {
 	void *swigCPtr;
 	BOOL swigCMemOwn;

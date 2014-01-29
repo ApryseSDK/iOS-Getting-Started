@@ -1,16 +1,17 @@
 //---------------------------------------------------------------------------------------
-// Copyright (c) 2001-2013 by PDFTron Systems Inc. All Rights Reserved.
+// Copyright (c) 2001-2014 by PDFTron Systems Inc. All Rights Reserved.
 // Consult legal.txt regarding legal and license information.
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-//#import "MagnifierView.h"
 #import "PDFViewCtrl.h"
 
 @class PDFViewCtrl;
 
 @class SelectionRectContainerView;
 
+@interface ToolView : UIImageView
+@end
 
 @interface Tool : UIView<ToolDelegate,UIPopoverControllerDelegate> {
     
@@ -24,8 +25,7 @@
     PDFViewCtrl* m_pdfViewCtrl;
     SelectionRectContainerView* selectionRectContainerView;
     CGRect lastTargetRect;
-    HighlightAnnot* m_default_text_annotation;
-    Square* m_default_annotation;
+	CGPoint m_down;
     PDFPoint* m_screenPt;
     PDFPoint* m_pagePt;
     UILabel* m_pageNumberLabel;
@@ -35,19 +35,21 @@
 
 @property (nonatomic, assign) BOOL backToPanToolAfterUse;
 @property (nonatomic, assign) BOOL pageIndicatorIsVisible;
+@property (nonatomic, copy) NSString* annotationAuthor;
+@property (readonly) BOOL createsAnnotation;
 
 - (id)initWithPDFViewCtrl:(PDFViewCtrl*)in_pdfViewCtrl;
 - (Tool*)getNewTool;
 - (void)onLayoutChanged;
 - (void)suspendProgressiveRendering;
-- (BOOL)conditionalRenderCancel;
-- (void)conditionalRenderResume:(BOOL)wasRendering;
 - (UIViewController *)viewController;
 - (void)noteEditCancelButtonPressed:(BOOL)showMenu;
 - (void)editSelectedAnnotationNote;
 - (PDFRect*)GetRectUnion:(PDFRect*)rect1 Rect2:(PDFRect*)rect2;
 - (void)deleteSelectedAnnotation;
--(void)saveNewNoteForMovingAnnotationWithString:(NSString*)str;
+- (void)saveNewNoteForMovingAnnotationWithString:(NSString*)str;
+- (void)keepToolAppearanceOnScreen;
+- (void)removeAppearanceViews;
 
 
 // touch events to override
@@ -66,7 +68,6 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView;
 - (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view;
-- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale;
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView;
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView;
 
@@ -74,8 +75,9 @@
 - (void) showMenu: (CGRect) targetRect animated:(BOOL)animated;
 - (void) showMenu:(CGRect)targetRect;
 - (void) showMenu;
-- (void) ConvertScreenPtToPagePtX:(float*)x Y:(float*)y PageNumber:(int)pageNumber;
-- (void) ConvertPagePtToScreenPtX:(float*)x Y:(float*)y PageNumber:(int)pageNumber;
+- (void) hideMenu;
+- (void) ConvertScreenPtToPagePtX:(CGFloat*)x Y:(CGFloat*)y PageNumber:(int)pageNumber;
+- (void) ConvertPagePtToScreenPtX:(CGFloat*)x Y:(CGFloat*)y PageNumber:(int)pageNumber;
 -(CGRect)PDFRectPage2CGRectScreen:(PDFRect*)r PageNumber:(int)pageNumber;
 
 
