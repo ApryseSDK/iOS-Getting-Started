@@ -20,3 +20,5 @@ DerivedData
 *.a
 
 *.res
+
+Lib/PDFNet.framework/*

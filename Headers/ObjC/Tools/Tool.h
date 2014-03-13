@@ -4,7 +4,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "PDFViewCtrl.h"
+#import <PDFNet/PDFViewCtrl.h>
 
 @class PDFViewCtrl;
 

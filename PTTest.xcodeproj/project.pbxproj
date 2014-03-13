@@ -19,13 +19,14 @@
 		BC5CEC5417A1ED5300405806 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5CEC5317A1ED5300405806 /* ViewController.m */; };
 		BC5CEC5717A1ED5400405806 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5CEC5517A1ED5400405806 /* ViewController.xib */; };
 		BC5CECC517A1F4B000405806 /* NSObjectInitWithCptr.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5CEC9F17A1F4B000405806 /* NSObjectInitWithCptr.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		BC5CECC617A1F4B000405806 /* libPDFNet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5CECA817A1F4B000405806 /* libPDFNet.a */; };
 		BC5CECC817A1F4B000405806 /* PopupIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5CECAB17A1F4B000405806 /* PopupIcon.png */; };
 		BC5CECD517A1F4B000405806 /* libTools.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5CECC117A1F4B000405806 /* libTools.a */; };
 		BC5CECD617A1F4B000405806 /* mech.pdf in Resources */ = {isa = PBXBuildFile; fileRef = BC5CECC317A1F4B000405806 /* mech.pdf */; };
 		BC5CECD717A1F4B000405806 /* pass_is_macosx.pdf in Resources */ = {isa = PBXBuildFile; fileRef = BC5CECC417A1F4B000405806 /* pass_is_macosx.pdf */; };
 		BC5CECD917A1F4CF00405806 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5CECD817A1F4CF00405806 /* QuartzCore.framework */; };
 		BC5CECDB17A1F4D700405806 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5CECDA17A1F4D700405806 /* CoreText.framework */; };
+		BCB1FB5118D0DD1E0002D8B8 /* PDFNet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB1FB5018D0DD1E0002D8B8 /* PDFNet.framework */; };
+		BCB1FB5418D10F630002D8B8 /* pdfnet.res in Resources */ = {isa = PBXBuildFile; fileRef = BCB1FB5318D10F310002D8B8 /* pdfnet.res */; };
 		BCFC4B3F1899734E00D657DF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFC4B3E1899734E00D657DF /* AVFoundation.framework */; };
 		BCFC4B411899735400D657DF /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFC4B401899735400D657DF /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
@@ -49,20 +50,17 @@
 		BC5CEC5617A1ED5400405806 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		BC5CEC9E17A1F4B000405806 /* NSObjectInitWithCptr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObjectInitWithCptr.h; sourceTree = "<group>"; };
 		BC5CEC9F17A1F4B000405806 /* NSObjectInitWithCptr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectInitWithCptr.m; sourceTree = "<group>"; };
-		BC5CECA017A1F4B000405806 /* PDFNetOBJC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFNetOBJC.h; sourceTree = "<group>"; };
-		BC5CECA117A1F4B000405806 /* PDFViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFViewCtrl.h; sourceTree = "<group>"; };
-		BC5CECA217A1F4B000405806 /* Print.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Print.h; sourceTree = "<group>"; };
-		BC5CECA317A1F4B000405806 /* Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Private.h; sourceTree = "<group>"; };
-		BC5CECA517A1F4B000405806 /* PanTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanTool.h; sourceTree = "<group>"; };
-		BC5CECA617A1F4B000405806 /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
-		BC5CECA817A1F4B000405806 /* libPDFNet.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPDFNet.a; sourceTree = "<group>"; };
 		BC5CECAB17A1F4B000405806 /* PopupIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PopupIcon.png; sourceTree = "<group>"; };
 		BC5CECC117A1F4B000405806 /* libTools.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTools.a; sourceTree = "<group>"; };
 		BC5CECC317A1F4B000405806 /* mech.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = mech.pdf; sourceTree = "<group>"; };
 		BC5CECC417A1F4B000405806 /* pass_is_macosx.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pass_is_macosx.pdf; sourceTree = "<group>"; };
 		BC5CECD817A1F4CF00405806 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BC5CECDA17A1F4D700405806 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		BC7E8BD418997204001A1B7E /* pdfnet.res */ = {isa = PBXFileReference; lastKnownFileType = file; path = pdfnet.res; sourceTree = "<group>"; };
+		BCB1FB4D18D0C93C0002D8B8 /* PanTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PanTool.h; sourceTree = "<group>"; };
+		BCB1FB4E18D0C93C0002D8B8 /* ToolManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToolManager.h; sourceTree = "<group>"; };
+		BCB1FB5018D0DD1E0002D8B8 /* PDFNet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PDFNet.framework; path = Lib/PDFNet.framework; sourceTree = "<group>"; };
+		BCB1FB5218D10C600002D8B8 /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
+		BCB1FB5318D10F310002D8B8 /* pdfnet.res */ = {isa = PBXFileReference; lastKnownFileType = file; path = pdfnet.res; sourceTree = "<group>"; };
 		BCFC4B3E1899734E00D657DF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BCFC4B401899735400D657DF /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -79,8 +77,8 @@
 				BC5CEC3B17A1ED5200405806 /* UIKit.framework in Frameworks */,
 				BC5CEC3D17A1ED5200405806 /* Foundation.framework in Frameworks */,
 				BC5CEC3F17A1ED5200405806 /* CoreGraphics.framework in Frameworks */,
-				BC5CECC617A1F4B000405806 /* libPDFNet.a in Frameworks */,
 				BC5CECD517A1F4B000405806 /* libTools.a in Frameworks */,
+				BCB1FB5118D0DD1E0002D8B8 /* PDFNet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +108,7 @@
 		BC5CEC3917A1ED5200405806 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BCB1FB5018D0DD1E0002D8B8 /* PDFNet.framework */,
 				BCFC4B401899735400D657DF /* MediaPlayer.framework */,
 				BCFC4B3E1899734E00D657DF /* AVFoundation.framework */,
 				BC5CECDA17A1F4D700405806 /* CoreText.framework */,
@@ -161,10 +160,6 @@
 			children = (
 				BC5CEC9E17A1F4B000405806 /* NSObjectInitWithCptr.h */,
 				BC5CEC9F17A1F4B000405806 /* NSObjectInitWithCptr.m */,
-				BC5CECA017A1F4B000405806 /* PDFNetOBJC.h */,
-				BC5CECA117A1F4B000405806 /* PDFViewCtrl.h */,
-				BC5CECA217A1F4B000405806 /* Print.h */,
-				BC5CECA317A1F4B000405806 /* Private.h */,
 				BC5CECA417A1F4B000405806 /* Tools */,
 			);
 			path = ObjC;
@@ -173,8 +168,9 @@
 		BC5CECA417A1F4B000405806 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				BC5CECA517A1F4B000405806 /* PanTool.h */,
-				BC5CECA617A1F4B000405806 /* Tool.h */,
+				BCB1FB5218D10C600002D8B8 /* Tool.h */,
+				BCB1FB4D18D0C93C0002D8B8 /* PanTool.h */,
+				BCB1FB4E18D0C93C0002D8B8 /* ToolManager.h */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -182,8 +178,7 @@
 		BC5CECA717A1F4B000405806 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				BC7E8BD418997204001A1B7E /* pdfnet.res */,
-				BC5CECA817A1F4B000405806 /* libPDFNet.a */,
+				BCB1FB5318D10F310002D8B8 /* pdfnet.res */,
 				BC5CECA917A1F4B000405806 /* libTools Required Files */,
 				BC5CECC117A1F4B000405806 /* libTools.a */,
 			);
@@ -263,6 +258,7 @@
 				BC5CEC4F17A1ED5300405806 /* Default@2x.png in Resources */,
 				BC5CEC5117A1ED5300405806 /* Default-568h@2x.png in Resources */,
 				BC5CEC5717A1ED5400405806 /* ViewController.xib in Resources */,
+				BCB1FB5418D10F630002D8B8 /* pdfnet.res in Resources */,
 				BC5CECC817A1F4B000405806 /* PopupIcon.png in Resources */,
 				BC5CECD617A1F4B000405806 /* mech.pdf in Resources */,
 				BC5CECD717A1F4B000405806 /* pass_is_macosx.pdf in Resources */,
@@ -369,14 +365,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LIBRARY = "libc++";
+				FRAMEWORK_SEARCH_PATHS = (
+					../../Lib/,
+					"$(PROJECT_DIR)/Lib",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PTTest/PTTest-Prefix.pch";
+				HEADER_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include;
 				INFOPLIST_FILE = "PTTest/PTTest-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Lib\"",
-				);
-				OTHER_LDFLAGS = "-lstdc++";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Lib";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -386,14 +384,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LIBRARY = "libc++";
+				FRAMEWORK_SEARCH_PATHS = (
+					../../Lib/,
+					"$(PROJECT_DIR)/Lib",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PTTest/PTTest-Prefix.pch";
+				HEADER_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include;
 				INFOPLIST_FILE = "PTTest/PTTest-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Lib\"",
-				);
-				OTHER_LDFLAGS = "-lstdc++";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Lib";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

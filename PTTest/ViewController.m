@@ -6,11 +6,12 @@
 //  Copyright (c) 2013 PDFTron. All rights reserved.
 //
 
+
 #import "ViewController.h"
-#import "PDFNetOBJC.h"
-#import "PDFViewCtrl.h"
-#import "Tool.h"
+#import "ToolManager.h"
 #import "PanTool.h"
+#import <PDFNet/PDFNetOBJC.h>
+#import <PDFNet/PDFViewCtrl.h>
 
 @interface ViewController ()
 
@@ -51,8 +52,16 @@
     // sets the non-page content of the PDFViewCtrl to transparent
     [pdfViewCtrl SetBackgroundColor:255 g:255 b:255 a:0];
     
-    // sets the initial tool to support text selection, annotation editing, etc.
-    [pdfViewCtrl setTool:[[PanTool alloc] initWithPDFViewCtrl:pdfViewCtrl]];
+	// creates a new tool manager using the designated initializer
+	ToolManager* toolManager = [[ToolManager alloc] initWithPDFViewCtrl:pdfViewCtrl];
+	
+	// registers the tool manager to receive events
+	[pdfViewCtrl setToolDelegate:toolManager];
+	
+	// sets the initial tool
+	[toolManager changeTool:[PanTool class]];
+    
+    
     
 }
 
