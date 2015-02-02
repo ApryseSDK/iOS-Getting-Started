@@ -25,20 +25,20 @@
 	// Do any additional setup after loading the view, typically from a nib.
 
     // Initilize PDFNet (in demo mode - pages will be watermarked)
-    [PDFNet Initialize:@""];
+    [PTPDFNet Initialize:@""];
 	
 	// Set resource path
 	NSString* resourcePath = [[NSBundle mainBundle] pathForResource:@"pdfnet" ofType:@"res"];
-	[PDFNet SetResourcesPath:resourcePath];;
+	[PTPDFNet SetResourcesPath:resourcePath];;
     
     // Get the path to document in the app bundle.
     NSString* fullPath = [[NSBundle mainBundle] pathForResource:@"mech" ofType:@"pdf"];
     
     // Initialize a new PDFDoc with the path to the file
-    PDFDoc* docToOpen = [[PDFDoc alloc] initWithFilepath:fullPath];
+    PTPDFDoc* docToOpen = [[PTPDFDoc alloc] initWithFilepath:fullPath];
     
     // Create a new PDFViewCtrl that is the size of the entire screen
-    PDFViewCtrl* pdfViewCtrl = [[PDFViewCtrl alloc] initWithFrame:[self.view bounds]];
+    PTPDFViewCtrl* pdfViewCtrl = [[PTPDFViewCtrl alloc] initWithFrame:[self.view bounds]];
     
     // Set the document to display
     [pdfViewCtrl SetDoc:docToOpen];
