@@ -25,8 +25,10 @@
 		BC5CECD717A1F4B000405806 /* pass_is_macosx.pdf in Resources */ = {isa = PBXBuildFile; fileRef = BC5CECC417A1F4B000405806 /* pass_is_macosx.pdf */; };
 		BC5CECD917A1F4CF00405806 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5CECD817A1F4CF00405806 /* QuartzCore.framework */; };
 		BC5CECDB17A1F4D700405806 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5CECDA17A1F4D700405806 /* CoreText.framework */; };
-		BCB1FB5118D0DD1E0002D8B8 /* PDFNet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB1FB5018D0DD1E0002D8B8 /* PDFNet.framework */; };
 		BCB1FB5418D10F630002D8B8 /* pdfnet.res in Resources */ = {isa = PBXBuildFile; fileRef = BCB1FB5318D10F310002D8B8 /* pdfnet.res */; };
+		BCBB09A61B1645ED006D3ABC /* tools-strings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCBB09A51B1645ED006D3ABC /* tools-strings.bundle */; };
+		BCBB09A81B1650EC006D3ABC /* PDFNet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBB09A71B1650EC006D3ABC /* PDFNet.framework */; };
+		BCBB09AC1B1651C6006D3ABC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBB09AB1B1651C6006D3ABC /* CFNetwork.framework */; };
 		BCFC4B3F1899734E00D657DF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFC4B3E1899734E00D657DF /* AVFoundation.framework */; };
 		BCFC4B411899735400D657DF /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFC4B401899735400D657DF /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
@@ -58,9 +60,11 @@
 		BC5CECDA17A1F4D700405806 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		BCB1FB4D18D0C93C0002D8B8 /* PanTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PanTool.h; sourceTree = "<group>"; };
 		BCB1FB4E18D0C93C0002D8B8 /* ToolManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToolManager.h; sourceTree = "<group>"; };
-		BCB1FB5018D0DD1E0002D8B8 /* PDFNet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PDFNet.framework; path = Lib/PDFNet.framework; sourceTree = "<group>"; };
 		BCB1FB5218D10C600002D8B8 /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
 		BCB1FB5318D10F310002D8B8 /* pdfnet.res */ = {isa = PBXFileReference; lastKnownFileType = file; path = pdfnet.res; sourceTree = "<group>"; };
+		BCBB09A51B1645ED006D3ABC /* tools-strings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "tools-strings.bundle"; sourceTree = "<group>"; };
+		BCBB09A71B1650EC006D3ABC /* PDFNet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PDFNet.framework; path = Lib/PDFNet.framework; sourceTree = "<group>"; };
+		BCBB09AB1B1651C6006D3ABC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		BCFC4B3E1899734E00D657DF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BCFC4B401899735400D657DF /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -70,15 +74,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCBB09AC1B1651C6006D3ABC /* CFNetwork.framework in Frameworks */,
 				BCFC4B411899735400D657DF /* MediaPlayer.framework in Frameworks */,
 				BCFC4B3F1899734E00D657DF /* AVFoundation.framework in Frameworks */,
 				BC5CECDB17A1F4D700405806 /* CoreText.framework in Frameworks */,
 				BC5CECD917A1F4CF00405806 /* QuartzCore.framework in Frameworks */,
 				BC5CEC3B17A1ED5200405806 /* UIKit.framework in Frameworks */,
+				BCBB09A81B1650EC006D3ABC /* PDFNet.framework in Frameworks */,
 				BC5CEC3D17A1ED5200405806 /* Foundation.framework in Frameworks */,
 				BC5CEC3F17A1ED5200405806 /* CoreGraphics.framework in Frameworks */,
 				BC5CECD517A1F4B000405806 /* libTools.a in Frameworks */,
-				BCB1FB5118D0DD1E0002D8B8 /* PDFNet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,7 +113,8 @@
 		BC5CEC3917A1ED5200405806 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BCB1FB5018D0DD1E0002D8B8 /* PDFNet.framework */,
+				BCBB09AB1B1651C6006D3ABC /* CFNetwork.framework */,
+				BCBB09A71B1650EC006D3ABC /* PDFNet.framework */,
 				BCFC4B401899735400D657DF /* MediaPlayer.framework */,
 				BCFC4B3E1899734E00D657DF /* AVFoundation.framework */,
 				BC5CECDA17A1F4D700405806 /* CoreText.framework */,
@@ -188,6 +194,7 @@
 		BC5CECA917A1F4B000405806 /* libTools Required Files */ = {
 			isa = PBXGroup;
 			children = (
+				BCBB09A51B1645ED006D3ABC /* tools-strings.bundle */,
 				BC5CECAB17A1F4B000405806 /* PopupIcon.png */,
 			);
 			path = "libTools Required Files";
@@ -255,6 +262,7 @@
 			files = (
 				BC5CEC4517A1ED5200405806 /* InfoPlist.strings in Resources */,
 				BC5CEC4D17A1ED5300405806 /* Default.png in Resources */,
+				BCBB09A61B1645ED006D3ABC /* tools-strings.bundle in Resources */,
 				BC5CEC4F17A1ED5300405806 /* Default@2x.png in Resources */,
 				BC5CEC5117A1ED5300405806 /* Default-568h@2x.png in Resources */,
 				BC5CEC5717A1ED5400405806 /* ViewController.xib in Resources */,
@@ -365,10 +373,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LIBRARY = "libc++";
-				FRAMEWORK_SEARCH_PATHS = (
-					../../Lib/,
-					"$(PROJECT_DIR)/Lib",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Lib";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PTTest/PTTest-Prefix.pch";
 				HEADER_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include;
@@ -376,6 +381,7 @@
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Lib";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "x86_64 i386 arm64 armv7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -384,10 +390,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LIBRARY = "libc++";
-				FRAMEWORK_SEARCH_PATHS = (
-					../../Lib/,
-					"$(PROJECT_DIR)/Lib",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Lib";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PTTest/PTTest-Prefix.pch";
 				HEADER_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include;
@@ -395,6 +398,7 @@
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Lib";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "x86_64 i386 arm64 armv7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

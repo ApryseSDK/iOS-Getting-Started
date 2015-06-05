@@ -5,50 +5,57 @@
 
 #import <Foundation/Foundation.h>
 #import <PDFNet/PDFViewCtrl.h>
+
 #import <UIKit/UIKit.h>
 
-@class PDFViewCtrl;
+@class PTPDFViewCtrl;
 @protocol ToolManagerDelegate;
 
-@interface ToolManager : UIView<PDFViewCtrlToolManager>
+@interface ToolManager : UIView<PTPDFViewCtrlToolManager>
 
 /**
  * A UIView that conforms to the ToolDelegate protocol; the current tool.
  *
  */
-@property (nonatomic, retain) UIView<ToolDelegate>* tool;
+@property (nonatomic, weak) UIView<PTToolDelegate>* tool;
 
 /**
  * An object that conforms to the ToolManagerDelegate protocol.
  *
  */
-@property (nonatomic, assign) id<ToolManagerDelegate> delegate;
+@property (nonatomic, weak) id<ToolManagerDelegate> delegate;
 
 /**
- * Returns a newly initialized tool with the required pointer to the PDFViewCtrl on which it will operate.
+ * The PDFViewCtrl that the ToolManager is initialized with.
  *
- * @param in_pdfViewCtrl a pointer to the PDFViewCtrl that the tool will operate.
+ */
+@property (nonatomic, weak) PTPDFViewCtrl* pdfViewCtrl;
+
+/**
+ * Returns a newly initialized tool with the required pointer to the PTPDFViewCtrl on which it will operate.
+ *
+ * @param in_pdfViewCtrl a pointer to the PTPDFViewCtrl that the tool will operate.
  *
  * @return A newly initialized `tool` object.
  *
  */
-- (id)initWithPDFViewCtrl:(PDFViewCtrl*)in_pdfViewCtrl;
+- (id)initWithPDFViewCtrl:(PTPDFViewCtrl*)in_pdfViewCtrl;
 
 /**
  * Create and set a new tool of the given type as the current tool.
  */
--(UIView<ToolDelegate>*)changeTool:(Class)toolType;
+-(UIView<PTToolDelegate>*)changeTool:(Class)toolType;
 
 /**
  * Returns the next tool to use if this tool did not completely handle an event.
  *
- * Tools receive events, listed as the optional selectors in this protocol, from a PDFViewCtrl. If a tool does not
+ * Tools receive events, listed as the optional selectors in this protocol, from a PTPDFViewCtrl. If a tool does not
  * finish handling an event (indicated by returning `NO` from one of the selectors that return a `BOOL`), then
  * getNextTool is used to instantiate a new tool that will continuning handling the event.
  *
  * @return a newly instantiated UIView that conforms to the ToolDelegate protocol.
  */
-- (UIView<ToolDelegate>*)getNewTool;
+- (UIView<PTToolDelegate>*)getNewTool;
 
 
 // touch gestures (on pdfScrollView)
@@ -388,7 +395,7 @@
 - (BOOL)onCustomEvent:(id)userData;
 
 /**
- * Tells the delegate that PDFViewCtrl has opened a new document via its selector setDoc.
+ * Tells the delegate that PTPDFViewCtrl has opened a new document via its selector setDoc.
  *
  */
 - (void)onSetDoc;
@@ -412,5 +419,22 @@
  */
 - (void)toolChanged:(ToolManager*)toolManager;
 
+/**
+ * Raised when the tools code adds an annotation
+ *
+ */
+- (void)annotationAdded:(PTAnnot*)annotation onPageNumber:(unsigned long)pageNumber;
+
+/**
+ * Raised when the tools code modifies an annotation
+ *
+ */
+- (void)annotationModified:(PTAnnot*)annotation onPageNumber:(unsigned long)pageNumber;
+
+/**
+ * Raised when the tools code removes an annotation
+ *
+ */
+- (void)annotationRemoved:(PTAnnot*)annotation onPageNumber:(unsigned long)pageNumber;
 
 @end

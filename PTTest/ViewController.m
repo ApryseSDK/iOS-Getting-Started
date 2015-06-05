@@ -6,12 +6,12 @@
 //  Copyright (c) 2013 PDFTron. All rights reserved.
 //
 
-
+#import <PDFNet/PDFNetOBJC.h>
+#import <PDFNet/PDFViewCtrl.h>
 #import "ViewController.h"
 #import "ToolManager.h"
 #import "PanTool.h"
-#import <PDFNet/PDFNetOBJC.h>
-#import <PDFNet/PDFViewCtrl.h>
+
 
 @interface ViewController ()
 
@@ -60,8 +60,6 @@
 	
 	// sets the initial tool
 	[toolManager changeTool:[PanTool class]];
-    
-    
     
 }
 

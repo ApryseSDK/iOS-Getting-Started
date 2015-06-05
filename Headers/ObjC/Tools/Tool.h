@@ -4,53 +4,69 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
+
 #import <PDFNet/PDFViewCtrl.h>
 
-@class PDFViewCtrl;
+@class PTPDFViewCtrl;
 
 @class SelectionRectContainerView;
 
 @interface ToolView : UIImageView
 @end
 
-@interface Tool : UIView<ToolDelegate,UIPopoverControllerDelegate> {
+#define GET_ANNOT_AT_DISTANCE_THRESHOLD 22
+#define GET_ANNOT_AT_MINIMUM_LINE_WEIGHT 10
+
+@interface Tool : UIView<UIGestureRecognizerDelegate, PTToolDelegate,UIPopoverControllerDelegate> {
     
     @public
-    PDFDoc* m_dummy_doc;
+    PTPDFDoc* m_dummy_doc;
     
     @package
     Class nextToolType;
-    Annot* m_moving_annotation;
+    PTAnnot* m_moving_annotation;
     int m_annot_page_number;
-    PDFViewCtrl* m_pdfViewCtrl;
+    __weak PTPDFViewCtrl* m_pdfViewCtrl;
     SelectionRectContainerView* selectionRectContainerView;
     CGRect lastTargetRect;
 	CGPoint m_down;
-    PDFPoint* m_screenPt;
-    PDFPoint* m_pagePt;
+    PTPDFPoint* m_screenPt;
+    PTPDFPoint* m_pagePt;
     UILabel* m_pageNumberLabel;
     UIPopoverController* popoverController;
-    
+	BOOL textMarkupAdobeHack;
 }
 
+/**
+ * If YES, next touches will not create a second annotation
+ */
 @property (nonatomic, assign) BOOL backToPanToolAfterUse;
+
+/**
+ * Class of tool to use when document is interacted with after
+ * creating a tool. If backToPanToolAfterUse is YES, then this
+ * will normally be the PanTool. Otherwise it will be the currently
+ * used annotaiton creation tool.
+ */
+@property (nonatomic, assign) Class defaultClass;
+
 @property (nonatomic, assign) BOOL pageIndicatorIsVisible;
 @property (nonatomic, copy) NSString* annotationAuthor;
 @property (readonly) BOOL createsAnnotation;
+@property (nonatomic, assign) BOOL allowScrolling;
 
-- (id)initWithPDFViewCtrl:(PDFViewCtrl*)in_pdfViewCtrl;
++ (BOOL)createsAnnotation;
+- (id)initWithPDFViewCtrl:(PTPDFViewCtrl*)in_pdfViewCtrl;
 - (Tool*)getNewTool;
 - (void)onLayoutChanged;
-- (void)suspendProgressiveRendering;
 - (UIViewController *)viewController;
 - (void)noteEditCancelButtonPressed:(BOOL)showMenu;
 - (void)editSelectedAnnotationNote;
-- (PDFRect*)GetRectUnion:(PDFRect*)rect1 Rect2:(PDFRect*)rect2;
+- (PTPDFRect*)GetRectUnion:(PTPDFRect*)rect1 Rect2:(PTPDFRect*)rect2;
 - (void)deleteSelectedAnnotation;
 - (void)saveNewNoteForMovingAnnotationWithString:(NSString*)str;
 - (void)keepToolAppearanceOnScreen;
 - (void)removeAppearanceViews;
-
 
 // touch events to override
 - (BOOL)onTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
@@ -59,17 +75,23 @@
 - (BOOL)onTouchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event;
 - (BOOL)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer;
 - (BOOL)handleTap:(UITapGestureRecognizer *)sender;
+- (BOOL)handleDoubleTap:(UITapGestureRecognizer*)sender;
 - (BOOL)touchesShouldCancelInContentView:(UIView *)view;
 - (BOOL)touchesShouldBegin:(NSSet *)touches withEvent:(UIEvent *)event inContentView:(UIView *)view;
 
 // scroll events to override
-- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale;
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView;
-- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view;
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
-- (void)scrollViewDidZoom:(UIScrollView *)scrollView;
+- (void)pdfScrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale;
+- (void)pdfScrollViewDidEndDecelerating:(UIScrollView *)scrollView;
+- (void)pdfScrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
+- (void)pdfScrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView;
+- (void)pdfScrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view;
+- (void)pdfScrollViewDidScroll:(UIScrollView *)scrollView;
+- (void)pdfScrollViewDidZoom:(UIScrollView *)scrollView;
+
+// events to notify interested parties
+- (void)annotationAdded:(PTAnnot*)annotation onPageNumber:(unsigned long)pageNumber;
+- (void)annotationModified:(PTAnnot*)annotation onPageNumber:(unsigned long)pageNumber;
+- (void)annotationRemoved:(PTAnnot*)annotation onPageNumber:(unsigned long)pageNumber;
 
 // internal and convenience methods
 - (void) showMenu: (CGRect) targetRect animated:(BOOL)animated;
@@ -78,7 +100,7 @@
 - (void) hideMenu;
 - (void) ConvertScreenPtToPagePtX:(CGFloat*)x Y:(CGFloat*)y PageNumber:(int)pageNumber;
 - (void) ConvertPagePtToScreenPtX:(CGFloat*)x Y:(CGFloat*)y PageNumber:(int)pageNumber;
--(CGRect)PDFRectPage2CGRectScreen:(PDFRect*)r PageNumber:(int)pageNumber;
+-(CGRect)PDFRectPage2CGRectScreen:(PTPDFRect*)r PageNumber:(int)pageNumber;
 
 
 @end
