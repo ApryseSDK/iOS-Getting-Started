@@ -54,8 +54,8 @@
 	imageViewConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[pdfViewCtrl]|" options:0 metrics:nil views:@{@"pdfViewCtrl": pdfViewCtrl}];
 	[self.view addConstraints:imageViewConstraints];
     
-    // Makes the background textured (< iOS 7) or plain gray (iOS 7)
-    [self.view setBackgroundColor:[UIColor scrollViewTexturedBackgroundColor]];
+    // Makes the background light gray
+    [self.view setBackgroundColor:[UIColor lightGrayColor]];
     
     // sets the non-page content of the PDFViewCtrl to transparent
     [pdfViewCtrl SetBackgroundColor:255 g:255 b:255 a:0];
