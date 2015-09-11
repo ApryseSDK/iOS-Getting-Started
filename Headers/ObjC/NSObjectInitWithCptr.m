@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------------------
-// Copyright (c) 2001-2014 by PDFTron Systems Inc. All Rights Reserved.
+// Copyright (c) 2001-2015 by PDFTron Systems Inc. All Rights Reserved.
 // Consult legal.txt regarding legal and license information.
 //---------------------------------------------------------------------------------------
 
@@ -7,9 +7,14 @@
 
 @implementation NSObject (NSObjectInitWithCptr)
 
--(id)initWithCptr: (void*) cptr
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-designated-initializers"
+
+-(instancetype)initWithCptr: (void*) cptr
 {
     return self;
 }
+#pragma clang diagnostic pop
+
 
 @end

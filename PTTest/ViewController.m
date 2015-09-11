@@ -38,13 +38,21 @@
     PTPDFDoc* docToOpen = [[PTPDFDoc alloc] initWithFilepath:fullPath];
     
     // Create a new PDFViewCtrl that is the size of the entire screen
-    PTPDFViewCtrl* pdfViewCtrl = [[PTPDFViewCtrl alloc] initWithFrame:[self.view bounds]];
-    
+	PTPDFViewCtrl* pdfViewCtrl = [[PTPDFViewCtrl alloc] init];
+	
     // Set the document to display
     [pdfViewCtrl SetDoc:docToOpen];
     
     // Add the PDFViewCtrl to the root view
     [self.view addSubview:pdfViewCtrl];
+	
+	[pdfViewCtrl setTranslatesAutoresizingMaskIntoConstraints:NO];
+	
+	NSArray *imageViewConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[pdfViewCtrl]|" options:0 metrics:nil views:@{@"pdfViewCtrl": pdfViewCtrl}];
+	[self.view addConstraints:imageViewConstraints];
+	
+	imageViewConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[pdfViewCtrl]|" options:0 metrics:nil views:@{@"pdfViewCtrl": pdfViewCtrl}];
+	[self.view addConstraints:imageViewConstraints];
     
     // Makes the background textured (< iOS 7) or plain gray (iOS 7)
     [self.view setBackgroundColor:[UIColor scrollViewTexturedBackgroundColor]];

@@ -101,6 +101,7 @@
 - (void) ConvertScreenPtToPagePtX:(CGFloat*)x Y:(CGFloat*)y PageNumber:(int)pageNumber;
 - (void) ConvertPagePtToScreenPtX:(CGFloat*)x Y:(CGFloat*)y PageNumber:(int)pageNumber;
 -(CGRect)PDFRectPage2CGRectScreen:(PTPDFRect*)r PageNumber:(int)pageNumber;
+-(void)swapA:(CGFloat*)a B:(CGFloat*)b;
 
 
 @end
