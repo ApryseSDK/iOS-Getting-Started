@@ -49,7 +49,7 @@
 	[self.view setBackgroundColor:[UIColor lightGrayColor]];
 	
 	// sets the non-page content of the PDFViewCtrl to transparent
-	[pdfViewCtrl SetBackgroundColor:255 g:0 b:0 a:128];
+	[pdfViewCtrl SetBackgroundColor:0 g:0 b:0 a:0];
 	
 	// creates a new tool manager using the designated initializer
 	ToolManager* toolManager = [[ToolManager alloc] initWithPDFViewCtrl:pdfViewCtrl];
