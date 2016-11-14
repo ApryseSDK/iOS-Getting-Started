@@ -1,10 +1,7 @@
-//
-//  AppDelegate.m
-//  PTTest
-//
-//  Created by PDFTron on 2013-07-25.
-//  Copyright (c) 2013 PDFTron. All rights reserved.
-//
+//---------------------------------------------------------------------------------------
+// Copyright (c) 2001-2016 by PDFTron Systems Inc. All Rights Reserved.
+// Consult legal.txt regarding legal and license information.
+//---------------------------------------------------------------------------------------
 
 #import "AppDelegate.h"
 

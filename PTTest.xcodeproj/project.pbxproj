@@ -18,20 +18,33 @@
 		BC5CEC5117A1ED5300405806 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5CEC5017A1ED5300405806 /* Default-568h@2x.png */; };
 		BC5CEC5417A1ED5300405806 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5CEC5317A1ED5300405806 /* ViewController.m */; };
 		BC5CEC5717A1ED5400405806 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5CEC5517A1ED5400405806 /* ViewController.xib */; };
-		BC5CECC517A1F4B000405806 /* NSObjectInitWithCptr.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5CEC9F17A1F4B000405806 /* NSObjectInitWithCptr.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		BC5CECC817A1F4B000405806 /* PopupIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5CECAB17A1F4B000405806 /* PopupIcon.png */; };
-		BC5CECD517A1F4B000405806 /* libTools.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5CECC117A1F4B000405806 /* libTools.a */; };
 		BC5CECD617A1F4B000405806 /* mech.pdf in Resources */ = {isa = PBXBuildFile; fileRef = BC5CECC317A1F4B000405806 /* mech.pdf */; };
 		BC5CECD717A1F4B000405806 /* pass_is_macosx.pdf in Resources */ = {isa = PBXBuildFile; fileRef = BC5CECC417A1F4B000405806 /* pass_is_macosx.pdf */; };
 		BC5CECD917A1F4CF00405806 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5CECD817A1F4CF00405806 /* QuartzCore.framework */; };
 		BC5CECDB17A1F4D700405806 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5CECDA17A1F4D700405806 /* CoreText.framework */; };
-		BCB1FB5418D10F630002D8B8 /* pdfnet.res in Resources */ = {isa = PBXBuildFile; fileRef = BCB1FB5318D10F310002D8B8 /* pdfnet.res */; };
-		BCBB09A61B1645ED006D3ABC /* tools-strings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCBB09A51B1645ED006D3ABC /* tools-strings.bundle */; };
-		BCBB09A81B1650EC006D3ABC /* PDFNet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBB09A71B1650EC006D3ABC /* PDFNet.framework */; };
+		BC88E52E1DC7ECF00036D761 /* Tools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC88E52D1DC7ECF00036D761 /* Tools.framework */; };
+		BC88E52F1DC7ECF00036D761 /* Tools.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC88E52D1DC7ECF00036D761 /* Tools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BCA829BB1D88807000EE4CD4 /* PDFNet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCA829BA1D88807000EE4CD4 /* PDFNet.framework */; };
+		BCA829BC1D88807000EE4CD4 /* PDFNet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BCA829BA1D88807000EE4CD4 /* PDFNet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BCBB09AC1B1651C6006D3ABC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBB09AB1B1651C6006D3ABC /* CFNetwork.framework */; };
 		BCFC4B3F1899734E00D657DF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFC4B3E1899734E00D657DF /* AVFoundation.framework */; };
 		BCFC4B411899735400D657DF /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFC4B401899735400D657DF /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BCA829BD1D88807000EE4CD4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BC88E52F1DC7ECF00036D761 /* Tools.framework in Embed Frameworks */,
+				BCA829BC1D88807000EE4CD4 /* PDFNet.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		BC5CEC3717A1ED5200405806 /* PTTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PTTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,19 +63,12 @@
 		BC5CEC5217A1ED5300405806 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		BC5CEC5317A1ED5300405806 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		BC5CEC5617A1ED5400405806 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
-		BC5CEC9E17A1F4B000405806 /* NSObjectInitWithCptr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObjectInitWithCptr.h; sourceTree = "<group>"; };
-		BC5CEC9F17A1F4B000405806 /* NSObjectInitWithCptr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectInitWithCptr.m; sourceTree = "<group>"; };
-		BC5CECAB17A1F4B000405806 /* PopupIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PopupIcon.png; sourceTree = "<group>"; };
-		BC5CECC117A1F4B000405806 /* libTools.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTools.a; sourceTree = "<group>"; };
 		BC5CECC317A1F4B000405806 /* mech.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = mech.pdf; sourceTree = "<group>"; };
 		BC5CECC417A1F4B000405806 /* pass_is_macosx.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pass_is_macosx.pdf; sourceTree = "<group>"; };
 		BC5CECD817A1F4CF00405806 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BC5CECDA17A1F4D700405806 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		BCB1FB4D18D0C93C0002D8B8 /* PanTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PanTool.h; sourceTree = "<group>"; };
-		BCB1FB4E18D0C93C0002D8B8 /* ToolManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToolManager.h; sourceTree = "<group>"; };
-		BCB1FB5218D10C600002D8B8 /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
-		BCB1FB5318D10F310002D8B8 /* pdfnet.res */ = {isa = PBXFileReference; lastKnownFileType = file; path = pdfnet.res; sourceTree = "<group>"; };
-		BCBB09A51B1645ED006D3ABC /* tools-strings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "tools-strings.bundle"; sourceTree = "<group>"; };
+		BC88E52D1DC7ECF00036D761 /* Tools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Tools.framework; path = Lib/Tools.framework; sourceTree = "<group>"; };
+		BCA829BA1D88807000EE4CD4 /* PDFNet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PDFNet.framework; path = Lib/PDFNet.framework; sourceTree = "<group>"; };
 		BCBB09A71B1650EC006D3ABC /* PDFNet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PDFNet.framework; path = Lib/PDFNet.framework; sourceTree = "<group>"; };
 		BCBB09AB1B1651C6006D3ABC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		BCFC4B3E1899734E00D657DF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -77,13 +83,13 @@
 				BCBB09AC1B1651C6006D3ABC /* CFNetwork.framework in Frameworks */,
 				BCFC4B411899735400D657DF /* MediaPlayer.framework in Frameworks */,
 				BCFC4B3F1899734E00D657DF /* AVFoundation.framework in Frameworks */,
+				BCA829BB1D88807000EE4CD4 /* PDFNet.framework in Frameworks */,
+				BC88E52E1DC7ECF00036D761 /* Tools.framework in Frameworks */,
 				BC5CECDB17A1F4D700405806 /* CoreText.framework in Frameworks */,
 				BC5CECD917A1F4CF00405806 /* QuartzCore.framework in Frameworks */,
 				BC5CEC3B17A1ED5200405806 /* UIKit.framework in Frameworks */,
-				BCBB09A81B1650EC006D3ABC /* PDFNet.framework in Frameworks */,
 				BC5CEC3D17A1ED5200405806 /* Foundation.framework in Frameworks */,
 				BC5CEC3F17A1ED5200405806 /* CoreGraphics.framework in Frameworks */,
-				BC5CECD517A1F4B000405806 /* libTools.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +99,6 @@
 		BC5CEC2E17A1ED5100405806 = {
 			isa = PBXGroup;
 			children = (
-				BC5CEC9B17A1F4B000405806 /* Headers */,
 				BC5CECA717A1F4B000405806 /* Lib */,
 				BC5CECC217A1F4B000405806 /* Test Files */,
 				BC5CEC4017A1ED5200405806 /* PTTest */,
@@ -113,6 +118,8 @@
 		BC5CEC3917A1ED5200405806 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BC88E52D1DC7ECF00036D761 /* Tools.framework */,
+				BCA829BA1D88807000EE4CD4 /* PDFNet.framework */,
 				BCBB09AB1B1651C6006D3ABC /* CFNetwork.framework */,
 				BCBB09A71B1650EC006D3ABC /* PDFNet.framework */,
 				BCFC4B401899735400D657DF /* MediaPlayer.framework */,
@@ -153,51 +160,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		BC5CEC9B17A1F4B000405806 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				BC5CEC9D17A1F4B000405806 /* ObjC */,
-			);
-			path = Headers;
-			sourceTree = "<group>";
-		};
-		BC5CEC9D17A1F4B000405806 /* ObjC */ = {
-			isa = PBXGroup;
-			children = (
-				BC5CEC9E17A1F4B000405806 /* NSObjectInitWithCptr.h */,
-				BC5CEC9F17A1F4B000405806 /* NSObjectInitWithCptr.m */,
-				BC5CECA417A1F4B000405806 /* Tools */,
-			);
-			path = ObjC;
-			sourceTree = "<group>";
-		};
-		BC5CECA417A1F4B000405806 /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-				BCB1FB5218D10C600002D8B8 /* Tool.h */,
-				BCB1FB4D18D0C93C0002D8B8 /* PanTool.h */,
-				BCB1FB4E18D0C93C0002D8B8 /* ToolManager.h */,
-			);
-			path = Tools;
-			sourceTree = "<group>";
-		};
 		BC5CECA717A1F4B000405806 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				BCB1FB5318D10F310002D8B8 /* pdfnet.res */,
-				BC5CECA917A1F4B000405806 /* libTools Required Files */,
-				BC5CECC117A1F4B000405806 /* libTools.a */,
 			);
 			path = Lib;
-			sourceTree = "<group>";
-		};
-		BC5CECA917A1F4B000405806 /* libTools Required Files */ = {
-			isa = PBXGroup;
-			children = (
-				BCBB09A51B1645ED006D3ABC /* tools-strings.bundle */,
-				BC5CECAB17A1F4B000405806 /* PopupIcon.png */,
-			);
-			path = "libTools Required Files";
 			sourceTree = "<group>";
 		};
 		BC5CECC217A1F4B000405806 /* Test Files */ = {
@@ -219,6 +186,7 @@
 				BC5CEC3317A1ED5200405806 /* Sources */,
 				BC5CEC3417A1ED5200405806 /* Frameworks */,
 				BC5CEC3517A1ED5200405806 /* Resources */,
+				BCA829BD1D88807000EE4CD4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -235,7 +203,7 @@
 		BC5CEC2F17A1ED5200405806 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = PDFTron;
 			};
 			buildConfigurationList = BC5CEC3217A1ED5200405806 /* Build configuration list for PBXProject "PTTest" */;
@@ -262,12 +230,9 @@
 			files = (
 				BC5CEC4517A1ED5200405806 /* InfoPlist.strings in Resources */,
 				BC5CEC4D17A1ED5300405806 /* Default.png in Resources */,
-				BCBB09A61B1645ED006D3ABC /* tools-strings.bundle in Resources */,
 				BC5CEC4F17A1ED5300405806 /* Default@2x.png in Resources */,
 				BC5CEC5117A1ED5300405806 /* Default-568h@2x.png in Resources */,
 				BC5CEC5717A1ED5400405806 /* ViewController.xib in Resources */,
-				BCB1FB5418D10F630002D8B8 /* pdfnet.res in Resources */,
-				BC5CECC817A1F4B000405806 /* PopupIcon.png in Resources */,
 				BC5CECD617A1F4B000405806 /* mech.pdf in Resources */,
 				BC5CECD717A1F4B000405806 /* pass_is_macosx.pdf in Resources */,
 			);
@@ -283,7 +248,6 @@
 				BC5CEC4717A1ED5200405806 /* main.m in Sources */,
 				BC5CEC4B17A1ED5300405806 /* AppDelegate.mm in Sources */,
 				BC5CEC5417A1ED5300405806 /* ViewController.m in Sources */,
-				BC5CECC517A1F4B000405806 /* NSObjectInitWithCptr.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,29 +278,38 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lstdc++";
 				SDKROOT = iphoneos;
@@ -349,21 +322,30 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-lstdc++";
 				SDKROOT = iphoneos;
@@ -381,11 +363,13 @@
 				GCC_PREFIX_HEADER = "PTTest/PTTest-Prefix.pch";
 				HEADER_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include;
 				INFOPLIST_FILE = "PTTest/PTTest-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Lib";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "PDFTron.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "x86_64 i386 arm64 armv7";
 				WRAPPER_EXTENSION = app;
 			};
@@ -400,11 +384,13 @@
 				GCC_PREFIX_HEADER = "PTTest/PTTest-Prefix.pch";
 				HEADER_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include;
 				INFOPLIST_FILE = "PTTest/PTTest-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Lib";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "PDFTron.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "x86_64 i386 arm64 armv7";
 				WRAPPER_EXTENSION = app;
 			};

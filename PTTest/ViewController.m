@@ -1,16 +1,12 @@
-//
-//  ViewController.m
-//  PTTest
-//
-//  Created by PDFTron on 2013-07-25.
-//  Copyright (c) 2013 PDFTron. All rights reserved.
-//
+//---------------------------------------------------------------------------------------
+// Copyright (c) 2001-2016 by PDFTron Systems Inc. All Rights Reserved.
+// Consult legal.txt regarding legal and license information.
+//---------------------------------------------------------------------------------------
 
-#import <PDFNet/PDFNetOBJC.h>
-#import <PDFNet/PDFViewCtrl.h>
+
 #import "ViewController.h"
-#import "ToolManager.h"
-#import "PanTool.h"
+#import <PDFNet/PDFNet.h>
+#import <Tools/Tools.h>
 
 
 @interface ViewController ()
@@ -27,39 +23,34 @@
     // Initilize PDFNet (in demo mode - pages will be watermarked)
     [PTPDFNet Initialize:@""];
 	
-	// Set resource path
-	NSString* resourcePath = [[NSBundle mainBundle] pathForResource:@"pdfnet" ofType:@"res"];
-	[PTPDFNet SetResourcesPath:resourcePath];;
-    
-    // Get the path to document in the app bundle.
-    NSString* fullPath = [[NSBundle mainBundle] pathForResource:@"mech" ofType:@"pdf"];
-    
-    // Initialize a new PDFDoc with the path to the file
-    PTPDFDoc* docToOpen = [[PTPDFDoc alloc] initWithFilepath:fullPath];
-    
-    // Create a new PDFViewCtrl that is the size of the entire screen
+	// Get the path to document in the app bundle.
+	NSString* fullPath = [[NSBundle mainBundle] pathForResource:@"mech" ofType:@"pdf"];
+	
+	// Initialize a new PDFDoc with the path to the file
+	PTPDFDoc* docToOpen = [[PTPDFDoc alloc] initWithFilepath:fullPath];
+	
+	// Create a new PDFViewCtrl that is the size of the entire screen
 	PTPDFViewCtrl* pdfViewCtrl = [[PTPDFViewCtrl alloc] init];
 	
-    // Set the document to display
-    [pdfViewCtrl SetDoc:docToOpen];
-    
-    // Add the PDFViewCtrl to the root view
-    [self.view addSubview:pdfViewCtrl];
+	// Set the document to display
+	[pdfViewCtrl SetDoc:docToOpen];
 	
+	// Add the PDFViewCtrl to the root view
+	[self.view addSubview:pdfViewCtrl];
+	
+	// set size of PDFViewCtrl
 	[pdfViewCtrl setTranslatesAutoresizingMaskIntoConstraints:NO];
 	
-	NSArray *imageViewConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[pdfViewCtrl]|" options:0 metrics:nil views:@{@"pdfViewCtrl": pdfViewCtrl}];
-	[self.view addConstraints:imageViewConstraints];
+	[NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[pdfViewCtrl]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(pdfViewCtrl)]];
 	
-	imageViewConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[pdfViewCtrl]|" options:0 metrics:nil views:@{@"pdfViewCtrl": pdfViewCtrl}];
-	[self.view addConstraints:imageViewConstraints];
-    
-    // Makes the background light gray
-    [self.view setBackgroundColor:[UIColor lightGrayColor]];
-    
-    // sets the non-page content of the PDFViewCtrl to transparent
-    [pdfViewCtrl SetBackgroundColor:255 g:255 b:255 a:0];
-    
+	[NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[pdfViewCtrl]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(pdfViewCtrl)]];
+	
+	// Makes the background light gray
+	[self.view setBackgroundColor:[UIColor lightGrayColor]];
+	
+	// sets the non-page content of the PDFViewCtrl to transparent
+	[pdfViewCtrl SetBackgroundColor:255 g:0 b:0 a:128];
+	
 	// creates a new tool manager using the designated initializer
 	ToolManager* toolManager = [[ToolManager alloc] initWithPDFViewCtrl:pdfViewCtrl];
 	
@@ -68,8 +59,9 @@
 	
 	// sets the initial tool
 	[toolManager changeTool:[PanTool class]];
-    
+
 }
+
 
 - (void)didReceiveMemoryWarning
 {
